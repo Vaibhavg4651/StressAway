@@ -1,0 +1,30 @@
+:root {
+  font-family: Inter;
+  background-color: #FFFFFF;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+
+}
+
+
+body {
+  overflow-x: hidden;
+  display: flex;
+}
+
+h1{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+}
+
+p{
+  font-family: var(font-family);
+  font-style: normal;
+  font-weight: 400;
+}
+
+

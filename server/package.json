@@ -1,0 +1,39 @@
+{
+  "name": "safehealth",
+  "version": "1.0.0",
+  "description": "Safe Health App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cloudinary": "^1.30.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "emailjs": "^4.0.2",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "helmet": "^7.0.0",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "4.1",
+    "mongoose": "^6.5.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.3",
+    "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
+  }
+}
