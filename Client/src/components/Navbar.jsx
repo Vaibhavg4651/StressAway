@@ -1,7 +1,18 @@
 import React from 'react'
 import Logo from '/logo.png'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import {setdata,setisLoggedin} from '../reducers/userSlice'
 
 const Navbar = () => {
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
+  const logouthandler=()=>{
+    dispatch(setisLoggedin(false))
+    dispatch(setdata())
+      navigate("/")
+  }
+  const {user}=useSelector((state)=>{return state})
   return (
     <div className='nav'>
         <div className='Logo'>
@@ -21,9 +32,11 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <div className='child-3'>
+      { user.isloggedin===true? <button value='Submit' onClick={logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
+                Logout
+              </a> </button> :<div className='child-3'>
         <div className='children'>
-            <button className='loginbtn'>
+             <button className='loginbtn'>
               <a href='/Login' className= 'logintext' style={{color : "white"}}>
                 Login
               </a>
@@ -34,7 +47,7 @@ const Navbar = () => {
                 Register 
               </a>
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

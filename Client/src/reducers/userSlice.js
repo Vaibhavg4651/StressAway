@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
-    name: 'users',
+    name: 'user',
     initialState: {
         isloggedin:false,
         userdata:null,
-        orders:null
     },
     reducers: {
      
@@ -15,13 +14,10 @@ const userSlice = createSlice({
       setisLoggedin(state,action){
         state.isloggedin=action.payload
       },
-      setuserorders(state,action){
-        state.orders=action.payload
-      }
     },
   })
 
 
   export default userSlice.reducer
-  export const {setdata,setuserorders,setisLoggedin}=userSlice.actions
+  export const {setdata,setisLoggedin}=userSlice.actions
   

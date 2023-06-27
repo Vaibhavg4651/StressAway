@@ -4,7 +4,6 @@ import { useState,  } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../assets/logo-no-background.svg";
 import gg from "../assets/google.png";
@@ -16,7 +15,6 @@ const Register = () => {
   const [age, setAge] = useState('')
   const [institution, setInstitution] = useState('')
   const [password, setpassword] = useState('')
-  const [loading,setloading]=useState(false)
   const navigate=useNavigate()
   const dispatch = useDispatch()
 
@@ -50,18 +48,14 @@ const Register = () => {
     if (v) {
      
       try{
-        setloading(true)
-        const res=await axios.post("https://pro-shop-ecommerce-backend.onrender.com/api/users",{email,password,name});
-       setloading(false)
-
+        const res=await axios.post("http://localhost:5000/api/register",{email,password,name, institution, age});
         if(res.data.success===true){
-        
-         toast.success("EMAIL IS SENT TO YOUR EMAILID , PLEASE VERIFY", {
+          toast.success("Successfully Registered", {
             'position': 'bottom-right',
             'theme': 'colored'
-        })
+          })
+          navigate('/login')
         }else{
-            setloading(false) 
             err(res.data.message)
         }}catch(e){
             err("something went wrong...");
@@ -107,7 +101,7 @@ const Register = () => {
           Please login to your account
         </div>
         <div className="login-form">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <label htmlFor="name" className="label-input-login">
               Name
             </label>
@@ -179,15 +173,7 @@ const Register = () => {
               className="loginbtn"
               style={{ width: " 159.27px", height: "50.76px" }}
             >
-              <input
-                value='Submit' 
-                onClick={handleSubmit} 
-                type='submit'
-                className="logintext"
-                style={{ color: "white", fontSize: "1.1rem" }}
-              >
                 Register
-              </input>
             </button>
           </div>
           </form>

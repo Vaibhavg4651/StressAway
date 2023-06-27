@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import DiagnosticTest from "./components/DiagnosticTest";
+import { useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import team from "./assets/Teamwork.png";
 import happy from "./assets/happy.png";
@@ -9,13 +10,15 @@ import anxious from "./assets/anxious.png";
 import sad from "./assets/sad.png";
 
 const UserFeed = () => {
+  const dataset = useSelector((state) => state.user.userdata);
+
   return (
     <div>
       <Navbar />
       <section>
         <div>
           <div className="user">
-            <h1>Hiii Harsh</h1>
+            <h1>Hiii {dataset.name}</h1>
             Take a deep breath
             <img src={team} alt="" />
           </div>

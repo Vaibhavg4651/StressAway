@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
-import User from '../src/models/userModel.js'
+import User from '../src/models/user.js'
 
 const protect = asyncHandler(async (req, res, next) => {
   const cookie=req.cookies.token;
@@ -15,17 +15,7 @@ const protect = asyncHandler(async (req, res, next) => {
         req.user=u;
         next()
     }
-    
     )
 })
 
-const admin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
-    next()
-  } else {
-    res.status(401)
-    throw new Error('Not authorized as an admin')
-  }
-}
-
-export { protect, admin }
+export { protect }

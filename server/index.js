@@ -7,6 +7,7 @@ import cors from "cors"
 import morgan from "morgan"
 import helmet from "helmet"
 import bodyParser from 'body-parser'
+import user from './src/routes/user.js'
 
 
 dotenv.config()
@@ -15,7 +16,10 @@ const app = express()
 
 
 // app.use(cors({origin:"https://pro-shop-ecommerce.onrender.com",credentials:true}))
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}))
 app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({policy:"cross-origin"}))
 app.use(morgan("common"))
@@ -23,9 +27,9 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json())
 app.use(cp())
-// app.use('/api/products', productRoutes)
-// app.use('/api/users', userRoutes)
-// app.use('/api/orders', orderRoutes)
+
+
+app.use('/api', user)
 
 // app.get('/api/config/paypal', (req, res) =>
 //   res.send(process.env.PAYPAL_CLIENT_ID)

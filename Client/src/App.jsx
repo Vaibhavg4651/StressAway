@@ -1,5 +1,7 @@
-import { useState } from "react";
+
 import "./App.css";
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,18 +9,21 @@ import Homepage from "./Homepage";
 import UserFeed from "./UserFeed";
 import BookSession from "./components/BookSession";
 
+axios.defaults.withCredentials = true;
+
 function App() {
-  const [count, setCount] = useState(0);
+  const {user}=useSelector((state)=>{return state})
 
   return (
+
     <>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
+          { user.isloggedin===true? <Route exact path="/User" element={<UserFeed />} />:null}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/Session" element={<BookSession />} />
-          <Route exact path="/User" element={<UserFeed />} />
+          <Route exact path="Session" element={<BookSession />} />
         </Routes>
       </BrowserRouter>
     </>
