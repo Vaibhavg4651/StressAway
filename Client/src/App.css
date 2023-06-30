@@ -1273,6 +1273,27 @@ color: #1E1E1E;
 
 }
 
+.clicked{
+  margin: 0rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 36px;
+text-align: center;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+color: #1E1E1E;
+}
+
+.mood:hover{
+  cursor: pointer;
+  scale: 1.1;
+}
+
 .BookSession{
   height: 20rem;
   display: flex;

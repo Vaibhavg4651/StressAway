@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema(
     },
     age: {
       type: String
+    },
+    mood: {
+      type: Array
     }
   },
   { timestamps: true }

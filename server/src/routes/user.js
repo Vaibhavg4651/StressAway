@@ -8,7 +8,7 @@ import {
   getUserById,
   } from '../controllers/userController.js'
   import { protect } from '../../middleware/authMiddleware.js'
-
+  import { registerSession } from '../controllers/sessionController.js'
 
 
   router.route('/register').post(registerUser).get(protect, getUsers)
@@ -16,8 +16,9 @@ import {
   router.post('/logout', protect,logout)
   
   router
-  .route('/:id')
-  .get(protect, getUserById)
+  .put('/user/:id', getUserById)
+
+  router.route('/user/:id/session').post(registerSession)
 
 
   export default router

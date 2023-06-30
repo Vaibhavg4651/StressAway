@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 
 const sessionSchema = new mongoose.Schema(
     {
+      userId:{
+        type: String,
+        required: true,
+      },
       name: {
         type: String,
         required: true,
@@ -14,20 +18,25 @@ const sessionSchema = new mongoose.Schema(
         max: 50,
         unique: true,
       },
-      password: {
+      phoneNumber: {
+        type: Number,
+        required: true,
+      },
+      appointmentDate: {
         type: String,
         required: true,
-        min: 6,
       },
-      institution: {
-        type: String
-      },
-      age: {
-        type: String
+      appointmentTime: {
+        type: String,
+        required: true,
+      }, 
+      appointmentType:{
+        type: String,
+        required: true,
       }
     },
     { timestamps: true }
   );
-  const session = mongoose.model('user', sessionSchema)
+  const session = mongoose.model('session', sessionSchema)
   
   export default session

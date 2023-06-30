@@ -3,6 +3,7 @@ import vect from "../assets/Vector1.png";
 import chat from "../assets/chat.png";
 import call from "../assets/call.png";
 import meet from "../assets/meet.png";
+import { useSelector } from "react-redux";
 import circle1 from "../assets/Ellipse1.png";
 import circle2 from "../assets/Ellipse2.png";
 import circle3 from "../assets/Ellipse3.png";
@@ -12,6 +13,9 @@ import heart from "../assets/ecg-heart.png";
 import security from "../assets/security.png";
 
 const Services = () => {
+  const {user}=useSelector((state)=>{return state})
+  const dataset = useSelector((state) => state.user.userdata);
+
   return (
     <div className="Services">
       <div className="Vector">
@@ -65,7 +69,7 @@ const Services = () => {
           <img src={circle3} className="circle3" alt="star" />
         </div>
           <button className="BookSessionbtn">
-            <a href="/Session" style={{textDecoration: "none", color:" #FFFBD6"}}>
+            <a href={ user.isloggedin===true? `/user/${dataset._id}/session` : "/login"} style={{textDecoration: "none", color:" #FFFBD6"}}>
               Book a session
               </a>
           </button>

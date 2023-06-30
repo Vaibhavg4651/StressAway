@@ -1,24 +1,21 @@
 import nodemailer from "nodemailer"
-const sendEmail=async(email,code)=>{
+const sendEmail=async(email)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
+        secure: false,
         auth: {
-          user: process.env.EMAIL_ID,
-          pass: process.env.EMAIL_PASSWORD
+          user: "vaibhavg4651@gmail.com",
+          pass: "wntbyrxxylggsobh"
         }
        });
        
        var mailOptions = {
-        from:process.env.EMAIL_ID,
+        from:"vaibhavg4651@gmail.com",
         to: email,
-        subject: `verify your email for proshop `,
-         html:`<h4>click on following link to verify your email</h4><br/><a href=https://pro-shop-ecommerce.onrender.com/verify/${code}>Click Here</a><br/><p>If you have not requested then please ignore it</p>`
+        subject: `Registration Successful`,
+         html:`<h4>click on following link to verify your email</h4><br/><a href="">Click Here</a><br/><p>If you have not requested then please ignore it</p>`
        };
        
-       transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } 
-       });
+       transporter.sendMail(mailOptions)
 }
 export default sendEmail;

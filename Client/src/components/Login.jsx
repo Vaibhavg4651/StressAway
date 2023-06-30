@@ -51,7 +51,7 @@ const Login = () => {
                 'position': 'bottom-right',
                 'theme': 'colored'
             })
-            navigate('/user')
+            navigate(`/user/${res.data.message._id}`)
             }else{
                 err(res.data.message)
             }}catch(e){

@@ -3,10 +3,13 @@ import Services from "./Services";
 import DiagnosticTest from "./DiagnosticTest";
 import About from "./About";
 import myImage1 from "../assets/Brainstorming.png";
+import { useSelector } from "react-redux";
 import myImage2 from "../assets/Joyride.svg";
 import star from "../assets/star.png";
 
 const Main = () => {
+  const {user}=useSelector((state)=>{return state})
+  const dataset = useSelector((state) => state.user.userdata);
   return (
     <>
       <div className="hero">
@@ -24,7 +27,7 @@ const Main = () => {
               <br /> Don’t worry! We are here for you :)
             </p>
             <button className="btnprof">
-              <a href="/Session" className="btnText">
+              <a href={ user.isloggedin===true? `/user/${dataset._id}/session` : "/login"} className="btnText">
                 Talk To a Professional
               </a>
             </button>

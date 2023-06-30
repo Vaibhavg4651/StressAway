@@ -20,10 +20,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
-          { user.isloggedin===true? <Route exact path="/User" element={<UserFeed />} />:null}
+          { user.isloggedin===true? <Route exact path="/user/:id" element={<UserFeed />} />:null}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="Session" element={<BookSession />} />
+          <Route exact path="/user/:id/Session" element={<BookSession />} />
         </Routes>
       </BrowserRouter>
     </>

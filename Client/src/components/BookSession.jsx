@@ -10,6 +10,7 @@ const BookSession = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Select your time slot");
   const [selectedWay, setSelectedWay] = useState(" ");
+  const [isClicked, setIsClicked] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("");
 
   const toggleDropdown = () => {
@@ -18,6 +19,7 @@ const BookSession = () => {
 
   const handleSelectedway = (value) => {
     setSelectedWay(value);
+    setIsClicked(true);
   };
   const handleOptionSelect = (value, option) => {
     setSelectedOption(option);
@@ -139,7 +141,7 @@ const BookSession = () => {
               Appointment Type:
             </label>
             <div className="appointmenttype">
-              <div className="chat1" onClick={() => handleSelectedway("chat")}>
+              <div className="chat1 " onClick={() => handleSelectedway("chat")}>
                 <img src={chat} alt="" style={{margin:" 0 0.4rem "}}/>
                   Chat
                 <img src={rup} alt="" style={{margin:"0  0.4rem"}}/>

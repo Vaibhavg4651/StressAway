@@ -1,6 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { errorHandler } from './middleware/errorMiddleware.js'
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oidc');
 import connectDB from './config/db.js'
 import cp from "cookie-parser"
 import cors from "cors"
@@ -8,6 +10,7 @@ import morgan from "morgan"
 import helmet from "helmet"
 import bodyParser from 'body-parser'
 import user from './src/routes/user.js'
+import cookieSession from 'cookie-session';
 
 
 dotenv.config()
@@ -30,6 +33,9 @@ app.use(cp())
 
 
 app.use('/api', user)
+app.use(cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 1000 }))
+app.use(passport.initialize());
+app.use(passport.session());
 
 // app.get('/api/config/paypal', (req, res) =>
 //   res.send(process.env.PAYPAL_CLIENT_ID)
