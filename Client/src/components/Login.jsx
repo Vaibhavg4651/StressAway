@@ -36,13 +36,31 @@ const Login = () => {
       return true
   }
 
+  const google = async () => {
+    try {
+      const res = window.open("http://localhost:5000/auth/google")
+      if (res.data.success === true) {
+        toast.success("Successfully Logged In", {
+          'position': 'bottom-right',
+          'theme': 'colored'
+        })
+        navigate(`/user`)
+
+      } else {
+        err(res.data.message)
+      }
+    } catch (e) {
+      err("something went wrong...")
+    }
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const v = validate() 
     if (v) {
         try{
-            const res=await axios.post("http://localhost:5000/api/login",{email,password});
+            const res=await axios.post("http://localhost:5000/login",{email,password});
             if(res.data.success===true){
               dispatch(setisLoggedin(true))
              dispatch(setdata(res.data.message))
@@ -51,7 +69,7 @@ const Login = () => {
                 'position': 'bottom-right',
                 'theme': 'colored'
             })
-            navigate(`/user/${res.data.message._id}`)
+            navigate(`/user`)
             }else{
                 err(res.data.message)
             }}catch(e){
@@ -148,7 +166,7 @@ const Login = () => {
           <div className="login-logo">
             <div className="logos">
 
-            <div>
+            <div onClick={google}>
               <img src={gg} alt="" />
             </div>
             <div>

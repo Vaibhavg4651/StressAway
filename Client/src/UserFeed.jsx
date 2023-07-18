@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Navbar from "./components/Navbar";
 import DiagnosticTest from "./components/DiagnosticTest";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import Footer from "./components/Footer";
 import team from "./assets/Teamwork.png";
 import happy from "./assets/happy.png";
@@ -12,20 +12,24 @@ import sad from "./assets/sad.png";
 import { ToastContainer, toast } from 'react-toastify'
 
 const UserFeed = () => {
+  const dispatch=useDispatch()
   const { user } = useSelector((state) => {
     return state;
   });
+ 
   const dataset = useSelector((state) => state.user.userdata);
   const [isClicked, setIsClicked] = useState(false);
+  const check = user.userdata.googleId ? "guser" : "User";
 
   const updateField = async (value) => {
     setIsClicked(true);
     try {
        await axios.put(
-        `http://localhost:5000/api/user/${dataset._id}`,
+        `http://localhost:5000/user`,
         {
           id: dataset._id,
-          newValue: { [value]: dataset.updatedAt },
+          newValue: { [value]: Date() },
+          check: check,
         }
         );
        
@@ -38,13 +42,15 @@ const UserFeed = () => {
       }
   };
 
+  
+
   return (
     <div>
       <Navbar />
       <section>
         <div>
           <div className="user">
-            <h1>Hiii {dataset.name}</h1>
+            <h1>Hiii {user.userdata.googleId ? user.userdata.firstName : dataset.name}</h1>
             Take a deep breath
             <img src={team} alt="" />
           </div>
@@ -96,7 +102,7 @@ const UserFeed = () => {
               <a
                 href={
                   user.isloggedin === true
-                    ? `/user/${dataset._id}/session`
+                    ? `/user/session`
                     : "/login"
                 }
                 style={{ textDecoration: "none", color: "#FFFBD6" }}

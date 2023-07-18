@@ -9,10 +9,16 @@ const Navbar = () => {
   const dispatch=useDispatch()
   const logouthandler=()=>{
     dispatch(setisLoggedin(false))
-    dispatch(setdata())
+    dispatch(setdata(""))
       navigate("/")
   }
   const {user}=useSelector((state)=>{return state})
+  const logout = () => {
+    window.open("http://localhost:5000/logout", "_self");
+    dispatch(setisLoggedin(false))
+    dispatch(setdata(""))
+      navigate("/")
+  };
   return (
     <div className='nav'>
         <div className='Logo'>
@@ -32,7 +38,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      { user.isloggedin===true? <button value='Submit' onClick={logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
+      { user.isloggedin===true? <button value='Submit' onClick={user.userdata.provider ? logout : logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
                 Logout
               </a> </button> :<div className='child-3'>
         <div className='children'>

@@ -41,6 +41,42 @@ const Register = () => {
     }
     return true
   }
+  
+
+  const google = async () => {
+    try {
+      const res = window.open("http://localhost:5000/auth/google")
+      if (res.data.success === true) {
+        toast.success("Successfully Logged In", {
+          'position': 'bottom-right',
+          'theme': 'colored'
+        })
+        
+        navigate(`/user`)
+      } else {
+        err(res.data.message)
+      }
+    } catch (e) {
+      err("something went wrong...")
+    }
+  }
+
+  const facebook = async () => {
+    try {
+      const res = window.open("http://localhost:5000/auth/facebook")
+      if (res.data.success === true) {
+        toast.success("Successfully Logged In", {
+          'position': 'bottom-right',
+          'theme': 'colored'
+        })
+        navigate(`/user`)
+      } else {
+        err(res.data.message)
+      }
+    } catch (e) {
+      err("something went wrong...")
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -48,7 +84,7 @@ const Register = () => {
     if (v) {
      
       try{
-        const res=await axios.post("http://localhost:5000/api/register",{email,password,name, institution, age});
+        const res=await axios.post("http://localhost:5000/register",{email,password,name, institution, age});
         if(res.data.success===true){
           toast.success("Successfully Registered", {
             'position': 'bottom-right',
@@ -179,10 +215,10 @@ const Register = () => {
           </form>
           <div className="login-logo">
             <div className="logos">
-              <div>
+              <div onClick={google}>
                 <img src={gg} alt="" />
               </div>
-              <div>
+              <div onClick={facebook}>
                 <img src={fb} alt="" />
               </div>
             </div>
@@ -195,4 +231,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register 

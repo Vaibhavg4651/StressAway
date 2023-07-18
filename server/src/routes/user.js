@@ -16,9 +16,10 @@ import {
   router.post('/logout', protect,logout)
   
   router
-  .put('/user/:id', getUserById)
+  .put('/user', getUserById)
 
-  router.route('/user/:id/session').post(registerSession)
+  router.route('/user/session').post(registerSession)
+
 
 
   export default router

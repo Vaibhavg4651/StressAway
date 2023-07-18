@@ -69,7 +69,7 @@ const Services = () => {
           <img src={circle3} className="circle3" alt="star" />
         </div>
           <button className="BookSessionbtn">
-            <a href={ user.isloggedin===true? `/user/${dataset._id}/session` : "/login"} style={{textDecoration: "none", color:" #FFFBD6"}}>
+            <a href={ user.isloggedin===true? `/user/session` : "/login"} style={{textDecoration: "none", color:" #FFFBD6"}}>
               Book a session
               </a>
           </button>
