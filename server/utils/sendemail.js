@@ -12,7 +12,7 @@ const sendEmail=async(email, name)=>{
        var mailOptions = {
         from: process.env.EMAIL_ID,
         to: email,
-        // cc: email,
+        cc: email,
         subject: `Welcome to StressAway - Your Account Signup is Successful!`,
 
          html:`<p>Dear ${name}, <br/>

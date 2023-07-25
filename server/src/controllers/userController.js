@@ -30,7 +30,7 @@ const authUser = asyncHandler(async (req, res) => {
       });
       res.cookie("token", token, {
         path: "/",
-        expires: new Date(Date.now() + 1000 * 36000),
+        expires: new Date(Date.now() + 1000 * 3600),
         httpOnly: true,
         sameSite: "none",
         secure: true,
@@ -42,13 +42,12 @@ const authUser = asyncHandler(async (req, res) => {
     }
   }
 });
-const logout = asyncHandler(
-  asyncHandler(async (req, res) => {
-    res.clearCookie("token");
-    req.cookies.token = "";
+const logout = asyncHandler(async (req, res) => {
+    res.clearCookie("token" , {path: "/" , httpOnly: true , sameSite: "none" , secure: true, expires: new Date(0)});
+    res.cookie.token = "";
     res.status(200).json({ success: true, message: "logout successfully" });
-  })
-);
+  });
+
 // @desc    Register a new user
 // @route   POST /api/users
 // @access  Public
@@ -101,9 +100,21 @@ const getUserById = asyncHandler(async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Error updating field" });
   }
-} else{
+} if(check === "guser"){
   try {
     const user = await guser.findByIdAndUpdate(
+      id,
+      { $push: { mood: newValue } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating field" });
+  }
+} if(check === "fuser"){
+  try {
+    const user = await fuser.findByIdAndUpdate(
       id,
       { $push: { mood: newValue } },
       { new: true }
@@ -143,7 +154,7 @@ const getUserById = asyncHandler(async (req, res) => {
         const newUser = new fuser( {
           facebookId: profile.id,
           name: profile.displayName,
-          email: profile.email,
+          email: profile.email || " ",
           mood:[{"mood":"time"}],
         })
         try {
@@ -160,10 +171,10 @@ const getUserById = asyncHandler(async (req, res) => {
         }
           }
     
-  const GOOGLE_CLIENT_ID = "773420280742-nbhh65mk41sjs6pili1idhgunuoskotq.apps.googleusercontent.com" ;
-  const Facebook_CLIENT_ID = "2412922625549226" ;
-  const GOOGLE_CLIENT_SECRET ="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";
-  const Facebook_CLIENT_SECRET ="d5a6e2d61f7edb6af5e8019f6f7fdbda";
+          const GOOGLE_CLIENT_ID = "773420280742-nbhh65mk41sjs6pili1idhgunuoskotq.apps.googleusercontent.com" ;
+          const Facebook_CLIENT_ID = "2412922625549226" ;
+          const GOOGLE_CLIENT_SECRET ="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";
+          const Facebook_CLIENT_SECRET ="d5a6e2d61f7edb6af5e8019f6f7fdbda";
 
 passport.use( new GoogleStrategy({
   clientID:GOOGLE_CLIENT_ID,

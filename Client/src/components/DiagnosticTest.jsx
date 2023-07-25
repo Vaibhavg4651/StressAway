@@ -18,8 +18,10 @@ const DiagnosticTest = () => {
             Knowing your issues is the first step to solve your problems and
             help you with your future{" "}
           </p>
-          <button className="testbtn">
+          <button className="testbtn" >
+            <a href="/test" style={{textDecoration:"none"}}>
           Take the diagnostic test
+            </a>
           </button>
         </div>
       </div>

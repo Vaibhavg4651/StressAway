@@ -614,10 +614,11 @@ font-weight: 400;
 font-size: 24px;
 line-height: 36px;
 /* identical to box height */
-
 text-align: center;
+}
 
-color: rgba(45, 174, 202, 0.94);
+.testbtn a{
+  color: rgba(45, 174, 202, 0.94);
 
 }
 
@@ -773,14 +774,14 @@ color: #333333;
   justify-content: center;
   flex-direction: row;
   width: 98vw;
-  height: 851px;
+  height: 718px;
 }
 
 .login-content-1{
   width: 50%;
   background: linear-gradient(150.64deg, #5479CB 0%, #2DAECA 100%);
   display: flex;
-  height: 851px;
+  height: 718px;
   margin-top: -0.5rem;
   align-items: center;
   justify-content: center;
@@ -1145,16 +1146,21 @@ height: 3.5rem;
   align-items: center;
   justify-content: center;
   height: 42px;
-width: 8rem;
+  width: 8rem;
   font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 14.9137px;
-line-height: 22px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14.9137px;
+  line-height: 22px;
   color: black;
   border: 1px solid #2DAECA;
   background: #FFFFFF;
-border-radius: 12.6766px;
+  border-radius: 12.6766px;
+}
+
+.selected:hover{
+  cursor: pointer;
+  scale: 1.1;
 }
 
 .call{
@@ -1201,7 +1207,7 @@ font-weight: 400;
 font-size: 35px;
 line-height: 52px;
 text-align: center;
-
+margin-bottom: 1.3rem;
 color: #1E1E1E;
 
 }
@@ -1217,9 +1223,9 @@ text-align: center;
 color: #1E1E1E;
 }
 
-.user img{
+/* .user img{
   margin: 1rem 0;
-}
+} */
 
 .feel{
   height: 316px;
@@ -1338,4 +1344,27 @@ font-size: 24px;
 line-height: 36px;
 text-align: center;
 color: #FFFBD6;
+}
+
+.test{
+  width: 102vw;
+}
+
+.diagnostic-Test{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.questionnaire{
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.questionnaire label{
+  font-family: 'Rubrik';
+  margin: 0.6rem 0;
 }

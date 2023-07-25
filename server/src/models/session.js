@@ -10,7 +10,6 @@ const sessionSchema = new mongoose.Schema(
         type: String,
         required: true,
         max: 50,
-        unique: true,
       },
       email: {
         type: String,
@@ -33,7 +32,19 @@ const sessionSchema = new mongoose.Schema(
       appointmentType:{
         type: String,
         required: true,
-      }
+      },
+      razorpay_order_id: {
+        type: String,
+        required: true,
+      },
+      razorpay_payment_id: {
+        type: String,
+        required: true,
+      },
+      razorpay_signature:{
+        type: String,
+        required: true,
+      } 
     },
     { timestamps: true }
   );

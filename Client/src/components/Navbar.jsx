@@ -3,18 +3,21 @@ import Logo from '/logo.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
+import axios from 'axios'
 
 const Navbar = () => {
   const navigate=useNavigate()
+  const {user}=useSelector((state)=>{return state})
   const dispatch=useDispatch()
-  const logouthandler=()=>{
+
+  const logouthandler= async()=>{
+    await axios.get("http://localhost:5000/user/logout");
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
-      navigate("/")
+    navigate("/")
   }
-  const {user}=useSelector((state)=>{return state})
-  const logout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+  const logout = async() => {
+    await axios.get("http://localhost:5000/logout");
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
       navigate("/")
@@ -38,7 +41,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      { user.isloggedin===true? <button value='Submit' onClick={user.userdata.provider ? logout : logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
+      { user.isloggedin===true? <button value='Submit' onClick={user.userdata.googleId || user.userdata.facebookId ? logout : logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
                 Logout
               </a> </button> :<div className='child-3'>
         <div className='children'>

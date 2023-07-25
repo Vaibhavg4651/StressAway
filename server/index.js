@@ -10,6 +10,7 @@ import helmet from "helmet"
 import bodyParser from 'body-parser'
 import user from './src/routes/user.js'
 import session from 'express-session';
+import Razorpay from "razorpay";
 
 
 dotenv.config()
@@ -64,7 +65,7 @@ app.get("/auth/login/success", (req, res) => {
   app.get("/logout", (req, res) => {
       req.logout();
       req.session = null;
-      res.cookie('connect.sid', '', { maxAge: 0 });
+      res.clearCookie('connect.sid');
       res.redirect("http://localhost:5173");
     });
   
@@ -74,18 +75,24 @@ app.get("/auth/login/success", (req, res) => {
         message: "user failed to authenticate.",
       });
     });
-// app.get('/api/config/paypal', (req, res) =>
-//   res.send(process.env.PAYPAL_CLIENT_ID)
-// )
-// app.get('/api/config/exchange', (req, res) =>
-//   res.send(process.env.EXCHANGE_API_KEY)
-// )
+
 
   app.get('/', (req, res) => {
     res.send('API is running....')
   })
 
 app.use(errorHandler)
+
+
+//PAYMENT GATEWAY
+export const instance = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+app.get("/getkey", (req, res) => {
+  res.status(200).json({ key: process.env.RAZORPAY_KEY_ID });
+});
 
 const PORT = process.env.PORT || 8000
 

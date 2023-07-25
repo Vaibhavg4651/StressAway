@@ -10,6 +10,7 @@ import UserFeed from "./UserFeed";
 import BookSession from "./components/BookSession";
 import { useEffect , useState } from "react";
 import {setdata,setisLoggedin} from './reducers/userSlice'
+import Test from "./Test";
 
 axios.defaults.withCredentials = true;
 
@@ -18,27 +19,28 @@ function App() {
 
   const {user}=useSelector((state)=>{return state})
   useEffect(() => {
-    const getuser=async()=>{
-      try{
-        const res = await fetch("http://localhost:5000/auth/login/success", {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await res.json();
-        if (data.success === true) {
-          dispatch(setisLoggedin(true));
-          dispatch(setdata(data.user));
-          console.log(data.user);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
     getuser();
-  }, [ ]);
+  }, []);
+
+  const getuser=async()=>{
+    try{
+      const res = await fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    
+      if (await res.json().success === true) {
+        dispatch(setisLoggedin(true));
+        dispatch(setdata(data.user));
+        console.log(data.user);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
 
   return (
@@ -50,6 +52,7 @@ function App() {
           { user.isloggedin===true? <Route exact path="/user" element={<UserFeed />} />:null}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
+          <Route exact path="/test" element={<Test />} />
           <Route exact path="/user/Session" element={<BookSession />} />
         </Routes>
       </BrowserRouter>

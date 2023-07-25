@@ -39,6 +39,7 @@
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0",
+    "razorpay": "^2.9.1",
     "socket.io": "^4.5.1"
   },
   "devDependencies": {

@@ -8,8 +8,10 @@ import team from "./assets/Teamwork.png";
 import happy from "./assets/happy.png";
 import angry from "./assets/angry.png";
 import anxious from "./assets/anxious.png";
+import * as LottiePlayer from "@lottiefiles/lottie-player";
 import sad from "./assets/sad.png";
 import { ToastContainer, toast } from 'react-toastify'
+import About from "./components/About";
 
 const UserFeed = () => {
   const dispatch=useDispatch()
@@ -19,7 +21,7 @@ const UserFeed = () => {
  
   const dataset = useSelector((state) => state.user.userdata);
   const [isClicked, setIsClicked] = useState(false);
-  const check = user.userdata.googleId ? "guser" : "User";
+  const check = dataset.googleId ? "guser" :( dataset.facebookId ? "fuser" : "User");
 
   const updateField = async (value) => {
     setIsClicked(true);
@@ -42,7 +44,6 @@ const UserFeed = () => {
       }
   };
 
-  
 
   return (
     <div>
@@ -50,9 +51,15 @@ const UserFeed = () => {
       <section>
         <div>
           <div className="user">
-            <h1>Hiii {user.userdata.googleId ? user.userdata.firstName : dataset.name}</h1>
+            <h1>Hiii {dataset.googleId ? dataset.firstName : dataset.name.split(" ")[0]}</h1>
             Take a deep breath
+            <div style={{margin:"0rem"}}>
+            <lottie-player  
+              autoplay
+              loop
+              mode="normal" id="fifthLottie" src="https://assets9.lottiefiles.com/packages/lf20_sddhugoc.json" style={{width:"300px" , height: "300px", }}></lottie-player>
             <img src={team} alt="" />
+          </div>
           </div>
           <div className="feel">
             <div className="feeling">
@@ -112,7 +119,7 @@ const UserFeed = () => {
             </button>
             <button>
               <a
-                href="/session"
+                href=" "
                 style={{ textDecoration: "none", color: "#FFFBD6" }}
               >
                 My sessions
@@ -123,6 +130,7 @@ const UserFeed = () => {
         <ToastContainer />
       </section>
       <DiagnosticTest />
+      <About/>
       <Footer />
     </div>
   );

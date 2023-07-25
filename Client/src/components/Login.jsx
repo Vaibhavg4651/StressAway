@@ -7,12 +7,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import eye from "../assets/eye.png";
+import ieye from "../assets/invisible.png";
 import axios from 'axios'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
 
 const Login = () => {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false);
     const dispatch=useDispatch()
     const location = useLocation();
     const navigate=useNavigate()
@@ -139,12 +142,16 @@ const Login = () => {
             <input
               id="password"
               className="login-input"
-              type="text"
+              style={{position:"relative"}}
               autoComplete="off"
+              type={showPassword ? "text" : "password"}
               valuee={password}
               onChange={(e) => { setpassword(e.target.value) }}
               placeholder=""
             />
+            <div onClick={() => setShowPassword(!showPassword)} style={{width:"4rem" , position:"absolute" , top:"27rem", left:"74rem"}}>
+              {showPassword ? <img src={eye} alt="" /> : <img src={ieye} alt="" />}
+            </div>
             <div className="loggedin">
               <a href="" style={{ textDecoration: "none", color: "#545454" }}>
                 Forgot Password

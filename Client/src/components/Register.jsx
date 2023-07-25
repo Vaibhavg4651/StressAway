@@ -1,116 +1,120 @@
 import React from "react";
-import { ToastContainer, toast } from 'react-toastify'
-import { useState,  } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/logo-no-background.svg";
 import gg from "../assets/google.png";
+import eye from "../assets/eye.png";
+import ieye from "../assets/invisible.png";
 import fb from "../assets/fbook.png";
 
 const Register = () => {
-  const [email, setemail] = useState('')
-  const [name, setname] = useState('')
-  const [age, setAge] = useState('')
-  const [institution, setInstitution] = useState('')
-  const [password, setpassword] = useState('')
-  const navigate=useNavigate()
-  const dispatch = useDispatch()
+  const [email, setemail] = useState("");
+  const [name, setname] = useState("");
+  const [age, setAge] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const err = (msg) => {
-
     toast.error(msg, {
-      'position': 'bottom-right',
-      'theme': 'colored'
-    })
-  }
+      position: "bottom-right",
+      theme: "colored",
+    });
+  };
 
   const validate = () => {
     if (!email) {
-      err('provide email')
-      return false
+      err("provide email");
+      return false;
+    } else if (!password) {
+      err("provide password greater than 8 characters");
+      return false;
+    } else if (!name) {
+      err("provide name");
+      return false;
     }
-    else if (!password ) {
-      err('provide password greater than 8 characters')
-      return false
-    }
-    else if (!name) {
-      err('provide name')
-      return false
-    }
-    return true
-  }
-  
+    return true;
+  };
 
   const google = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/google")
+      const res = window.open("http://localhost:5000/auth/google");
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
-          'position': 'bottom-right',
-          'theme': 'colored'
-        })
-        
-        navigate(`/user`)
+          position: "bottom-right",
+          theme: "colored",
+        });
+
+        navigate(`/user`);
       } else {
-        err(res.data.message)
+        err(res.data.message);
       }
     } catch (e) {
-      err("something went wrong...")
+      err("something went wrong...");
     }
-  }
+  };
 
   const facebook = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/facebook")
+      const res = window.open("http://localhost:5000/auth/facebook");
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
-          'position': 'bottom-right',
-          'theme': 'colored'
-        })
-        navigate(`/user`)
+          position: "bottom-right",
+          theme: "colored",
+        });
+        navigate(`/user`);
       } else {
-        err(res.data.message)
+        err(res.data.message);
       }
     } catch (e) {
-      err("something went wrong...")
+      err("something went wrong...");
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const v = validate()
+    e.preventDefault();
+    const v = validate();
     if (v) {
-     
-      try{
-        const res=await axios.post("http://localhost:5000/register",{email,password,name, institution, age});
-        if(res.data.success===true){
+      try {
+        const res = await axios.post("http://localhost:5000/register", {
+          email,
+          password,
+          name,
+          institution,
+          age,
+        });
+        if (res.data.success === true) {
           toast.success("Successfully Registered", {
-            'position': 'bottom-right',
-            'theme': 'colored'
-          })
-          navigate('/login')
-        }else{
-            err(res.data.message)
-        }}catch(e){
-            err("something went wrong...");
+            position: "bottom-right",
+            theme: "colored",
+          });
+          navigate("/login");
+        } else {
+          err(res.data.message);
         }
-
+      } catch (e) {
+        err("something went wrong...");
+      }
     }
+  };
 
-  }
-  
   return (
-    <div className="Login">
-      <section className="login-content-1">
+    <div className="Login" style={{height:"55rem"}}>
+      <section className="login-content-1" style={{height:"55rem"}}>
         <img src={Logo} style={{ width: " 452.38px", height: "98px" }} alt="" />
       </section>
-      <section className="login-content-2">
+      <section className="login-content-2" style={{height:"41rem"}}>
         <div className="login-content-2-div">
           <a
+           href="/login"
             className="logintext"
-            style={{color: "#545454",  fontSize: "1.1rem" }}
+            style={{ color: "#545454", fontSize: "1.1rem" }}
           >
             Login
           </a>
@@ -149,7 +153,9 @@ const Register = () => {
               placeholder=" "
               value={name}
               required
-              onChange={(e) => { setname(e.target.value) }}
+              onChange={(e) => {
+                setname(e.target.value);
+              }}
             />
             <label htmlFor="email" className="label-input-login">
               Email
@@ -160,7 +166,9 @@ const Register = () => {
               autoComplete="off"
               type="text"
               value={email}
-              onChange={(e) => { setemail(e.target.value) }}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
               placeholder=" "
               required
             />
@@ -170,13 +178,21 @@ const Register = () => {
             <input
               id="password"
               className="login-input"
-              type="text"
+              type={showPassword ? "text" : "password"}
               autoComplete="off"
               value={password}
-              onChange={(e) => { setpassword(e.target.value) }}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
               placeholder=""
+              
               required
             />
+            <div style={{position:"relative"}}>
+            <div onClick={() => setShowPassword(!showPassword)} style={{width:"4rem" , position:"absolute" , top:"-2rem", left:"28rem"}}>
+              {showPassword ? <img src={eye} alt="" /> : <img src={ieye} alt="" />}
+            </div>
+            </div>
             <label htmlFor="email" className="label-input-login">
               Institution/School
             </label>
@@ -187,7 +203,9 @@ const Register = () => {
               type="text"
               placeholder=" "
               value={institution}
-              onChange={(e) => { setInstitution(e.target.value) }}
+              onChange={(e) => {
+                setInstitution(e.target.value);
+              }}
             />
             <label htmlFor="email" className="label-input-login">
               Age
@@ -199,19 +217,21 @@ const Register = () => {
               type="text"
               placeholder=" "
               value={age}
-              onChange={(e) => { setAge(e.target.value) }}
+              onChange={(e) => {
+                setAge(e.target.value);
+              }}
             />
-          <div className="loggedin">
-            <a href="" style={{ textDecoration: "none", color: "#545454" }}>
-              Forgot Password
-            </a>
-            <button
-              className="loginbtn"
-              style={{ width: " 159.27px", height: "50.76px" }}
-            >
+            <div className="loggedin">
+              <a href="" style={{ textDecoration: "none", color: "#545454" }}>
+                Forgot Password
+              </a>
+              <button
+                className="loginbtn"
+                style={{ width: " 159.27px", height: "50.76px" }}
+              >
                 Register
-            </button>
-          </div>
+              </button>
+            </div>
           </form>
           <div className="login-logo">
             <div className="logos">
@@ -231,4 +251,4 @@ const Register = () => {
   );
 };
 
-export default Register 
+export default Register;
