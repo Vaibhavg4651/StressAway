@@ -11,6 +11,7 @@ import BookSession from "./components/BookSession";
 import { useEffect , useState } from "react";
 import {setdata,setisLoggedin} from './reducers/userSlice'
 import Test from "./Test";
+import Forgetpassword from "./components/Forgetpassword";
 
 axios.defaults.withCredentials = true;
 
@@ -53,6 +54,7 @@ function App() {
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
           <Route exact path="/test" element={<Test />} />
+          <Route exact path="/forgetPassword" element={<Forgetpassword />} />
           <Route exact path="/user/Session" element={<BookSession />} />
         </Routes>
       </BrowserRouter>

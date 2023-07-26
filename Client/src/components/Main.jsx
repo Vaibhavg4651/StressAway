@@ -27,7 +27,7 @@ const Main = () => {
               <br /> Don’t worry! We are here for you :)
             </p>
             <button className="btnprof">
-              <a href={ user.isloggedin===true? `/user/${dataset._id}/session` : "/login"} className="btnText">
+              <a href={ user.isloggedin===true? `/user/session` : "/login"} className="btnText">
                 Talk To a Professional
               </a>
             </button>

@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
   mood: {
     type: Array
   },
+  test:{
+    type: Array
+  },
   createdAt: {
     type: Date,
     default: Date.now,

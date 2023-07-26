@@ -14,7 +14,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import About from "./components/About";
 
 const UserFeed = () => {
-  const dispatch=useDispatch()
+  const dispatch= useDispatch()
   const { user } = useSelector((state) => {
     return state;
   });
@@ -43,8 +43,6 @@ const UserFeed = () => {
         console.error(error);
       }
   };
-
-
   return (
     <div>
       <Navbar />
@@ -96,7 +94,7 @@ const UserFeed = () => {
             </div>
           </div>
         </div>
-        <div className="BookSession">
+        <div className="BookSession" id="Services">
           <h1>Book a session</h1>
           <div className="booksession-text">
             Please don’t hesitate. Our team comprises of licensed professionals

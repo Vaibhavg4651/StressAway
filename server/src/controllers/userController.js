@@ -5,7 +5,6 @@ import fuser from "../models/facebookUser.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import sendEmail from "../../utils/sendemail.js";
-import crypto from "crypto";
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
 import passport from "passport";
@@ -15,15 +14,16 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res
-      .status(400)
-      .json({ message: "please provide email and password" });
+    .status(400)
+    .json({ message: "please provide email and password" });
   }
+  const Email = email.toLowerCase();
 
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: Email });
   if (user === null) {
     throw new Error("Invalid  email or password");
   } else {
-    const validate = await bcrypt.compare(req.body.password, user.password);
+    const validate = await bcrypt.compare(password, user.password);
     if (validate) {
       const token = await jwt.sign({ _id: user._id }, process.env.SECRET_KEY, {
         expiresIn: "1hr",
@@ -52,7 +52,7 @@ const logout = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password , institution, age } = req.body;
   if (!email || !name || !password) {
     throw new Error("provide all details during registeration ...");
   }
@@ -63,15 +63,16 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
   const hashedpassword = await bcrypt.hash(req.body.password, 10);
-  const code = crypto.randomBytes(32).toString("hex");
+  const Email = email.toLowerCase();
 
   const newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
+    name: name,
+    email: Email,
     password: hashedpassword,
-    institution: req.body.institution,
-    age: req.body.age,
-    mood:[{"mood":"time"}]
+    institution: institution,
+    age: age,
+    mood:[{"mood":"time"}],
+    test:[{"time":"test"}]
   });
   const user = await newUser.save();
   sendEmail(req.body.email , req.body.name);
@@ -83,6 +84,30 @@ const getUsers = asyncHandler(async (req, res) => {
   res.json({ success: true, message: users });
 });
 
+const updatePassword = asyncHandler(async (req, res) => {
+  const { email, newpassword ,conpassword } = req.body;
+  if (!email || !newpassword || !conpassword) {
+    throw new Error("provide all details correctly...");
+  }
+  const Email = email.toLowerCase();
+  console.log(Email);
+
+  try {
+    const document = await User.findOne({ email: Email });
+    if (document) {
+      // Document was found
+      const hashedpassword = await bcrypt.hash(req.body.newpassword, 10);
+      await User.findOneAndUpdate(
+        { email: Email }, // Find the document using the specified field
+        { $set: { password: hashedpassword } }, 
+        { new: true } 
+      );
+    }
+    res.status(200).json({ success: true, message: "Password updated" });
+  } catch (error) {
+    console.error('User not found :', error);
+  }
+});
 // @desc    Put user by ID
 // @route   Put /api/user/:id
 
@@ -125,6 +150,48 @@ const getUserById = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "Error updating field" });
   }
 }
+});
+
+
+const updateTest = asyncHandler(async (req, res) => {
+  const { id, newValue , check } = req.body;
+  if(check === "User"){
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $push: { test: newValue } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating field" });
+  }
+} if(check === "guser"){
+  try {
+    const user = await guser.findByIdAndUpdate(
+      id,
+      { $push: { test: newValue } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating field" });
+  }
+} if(check === "fuser"){
+  try {
+    const user = await fuser.findByIdAndUpdate(
+      id,
+      { $push: { test: newValue } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating field" });
+  }
+}
 
 });
 
@@ -135,6 +202,7 @@ const getUserById = asyncHandler(async (req, res) => {
       firstName: profile.name.givenName,
       lastName: profile.name.familyName,
       mood:[{"mood":"time"}],
+      test:[{"time":"test"}],
     })
     try {
       let user = await guser.findOne({ googleId: profile.id })
@@ -156,6 +224,7 @@ const getUserById = asyncHandler(async (req, res) => {
           name: profile.displayName,
           email: profile.email || " ",
           mood:[{"mood":"time"}],
+          test:[{"time":"test"}],
         })
         try {
           let user = await fuser.findOne({ facebookId: profile.id })
@@ -209,4 +278,4 @@ passport.use( new GoogleStrategy({
     }
   });
 
-export { authUser, registerUser,logout, getUsers, getUserById};
+export { authUser, registerUser,logout, getUsers, getUserById, updateTest, updatePassword};

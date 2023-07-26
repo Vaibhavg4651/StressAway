@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
-import { useSelector} from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import arw from "../assets/uparrow.svg";
 import chat from "../assets/chat.svg";
 import call from "../assets/call.svg";
 import meet from "../assets/meet.svg";
 import rup from "../assets/rupee.svg";
 import axios from "axios";
+import Logo from '/logo.png'
+import {setdata,setisLoggedin} from '../reducers/userSlice'
+
 
 const BookSession = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +20,22 @@ const BookSession = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [appointmentDate, setAppointmentDate] = useState("");
+
+  const {user}=useSelector((state)=>{return state})
+  const dispatch=useDispatch()
+
+  const logouthandler= async()=>{
+    await axios.get("http://localhost:5000/user/logout");
+    dispatch(setisLoggedin(false))
+    dispatch(setdata(""))
+    window.open("/", "_self");
+  }
+  const logout = async() => {
+    await axios.get("http://localhost:5000/logout");
+    dispatch(setisLoggedin(false))
+    dispatch(setdata(""))
+    window.open("/", "_self");
+  };
 
   const dataset = useSelector((state) => state.user.userdata);
 
@@ -90,7 +108,41 @@ const BookSession = () => {
 
   return (
     <>
-      <Navbar />
+      <div className='nav'>
+        <div className='Logo'>
+        <a href="/" >
+          <img src={Logo} className="logo" alt="logo" />
+        </a>
+      </div>
+      <div className='child-2'>
+        <div className='children'>
+            <a href="/user#About" style={{textDecoration: "none" , color: "black"}}>
+              About
+              </a> 
+        </div>
+        <div className='children'>
+          <a href="/user#Services" style={{textDecoration: "none" , color: "black"}}>
+            Services
+          </a>
+        </div>
+      </div>
+      { user.isloggedin===true? <button value='Submit' onClick={user.userdata.googleId || user.userdata.facebookId ? logout : logouthandler} className='loginbtn'> <a href='' className= 'logintext' style={{color : "white"}}>
+                Logout
+              </a> </button> :<div className='child-3'>
+        <div className='children'>
+             <button className='loginbtn'>
+              <a href='/Login' className= 'logintext' style={{color : "white"}}>
+                Login
+              </a>
+            </button>
+        </div>
+        <div className='children'>
+              <a href='/Register' className='logintext' style={{color : "#545454"}}> 
+                Register 
+              </a>
+        </div>
+      </div>}
+    </div>
       <div className="Session">
         <div className="session-content-1">
           <div className="session-content-1-img"></div>

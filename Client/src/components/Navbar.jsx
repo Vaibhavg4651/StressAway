@@ -1,12 +1,10 @@
 import React from 'react'
 import Logo from '/logo.png'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
 import axios from 'axios'
 
 const Navbar = () => {
-  const navigate=useNavigate()
   const {user}=useSelector((state)=>{return state})
   const dispatch=useDispatch()
 
@@ -14,13 +12,13 @@ const Navbar = () => {
     await axios.get("http://localhost:5000/user/logout");
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
-    navigate("/")
+    window.open("/", "_self");
   }
   const logout = async() => {
     await axios.get("http://localhost:5000/logout");
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
-      navigate("/")
+    window.open("/", "_self");
   };
   return (
     <div className='nav'>

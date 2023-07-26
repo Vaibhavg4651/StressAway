@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import think from "../assets/Thinking.png";
 
 const DiagnosticTest = () => {
+  const {user}=useSelector((state)=>{return state})
   return (
     <div className="Test">
       <div className="diagnostic-test">
@@ -19,7 +21,7 @@ const DiagnosticTest = () => {
             help you with your future{" "}
           </p>
           <button className="testbtn" >
-            <a href="/test" style={{textDecoration:"none"}}>
+            <a href={ user.isloggedin===true? `/test` : "/login"} style={{textDecoration:"none"}}>
           Take the diagnostic test
             </a>
           </button>

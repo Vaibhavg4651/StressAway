@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema(
     },
     mood: {
       type: Array
+    }, 
+    test:{
+      type: Array
     }
   },
   { timestamps: true }

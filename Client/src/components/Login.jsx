@@ -53,9 +53,26 @@ const Login = () => {
         err(res.data.message)
       }
     } catch (e) {
-      err("something went wrong...")
+      err("Wrong email or password...")
     }
   }
+
+  const facebook = async () => {
+    try {
+      const res = window.open("http://localhost:5000/auth/facebook");
+      if (res.data.success === true) {
+        toast.success("Successfully Logged In", {
+          position: "bottom-right",
+          theme: "colored",
+        });
+        navigate(`/user`);
+      } else {
+        err(res.data.message);
+      }
+    } catch (e) {
+      err("something went wrong...");
+    }
+  };
 
 
   const handleSubmit = async (e) => {
@@ -80,11 +97,7 @@ const Login = () => {
             }
     
     }
-  
-
 }
-
-
 
   return (
     <div className="Login" >
@@ -145,7 +158,7 @@ const Login = () => {
               style={{position:"relative"}}
               autoComplete="off"
               type={showPassword ? "text" : "password"}
-              valuee={password}
+              value={password}
               onChange={(e) => { setpassword(e.target.value) }}
               placeholder=""
             />
@@ -153,7 +166,7 @@ const Login = () => {
               {showPassword ? <img src={eye} alt="" /> : <img src={ieye} alt="" />}
             </div>
             <div className="loggedin">
-              <a href="" style={{ textDecoration: "none", color: "#545454" }}>
+              <a href="/forgetPassword" style={{ textDecoration: "none", color: "#545454" }}>
                 Forgot Password
               </a>
               <button
@@ -172,11 +185,10 @@ const Login = () => {
           </form>
           <div className="login-logo">
             <div className="logos">
-
             <div onClick={google}>
               <img src={gg} alt="" />
             </div>
-            <div>
+            <div onClick={facebook}>
               <img src={fb} alt=""/>
             </div>
             </div>
