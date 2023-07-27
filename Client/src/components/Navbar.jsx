@@ -22,7 +22,7 @@ const Navbar = () => {
   };
   return (
     <div className='nav'>
-        <div className='Logo'>
+        <div className={`${user.isloggedin ? "Logo " : ""}`}>
         <a href="/" >
           <img src={Logo} className="logo" alt="logo" />
         </a>
@@ -33,7 +33,7 @@ const Navbar = () => {
               About
               </a> 
         </div>
-        <div className='children'>
+        <div className={ `children ${user.isloggedin ? " " : "Logo"}`}>
           <a href="#Services" style={{textDecoration: "none" , color: "black"}}>
             Services
           </a>

@@ -70,7 +70,7 @@ const Login = () => {
         err(res.data.message);
       }
     } catch (e) {
-      err("something went wrong...");
+      err("Invalid email or password");
     }
   };
 

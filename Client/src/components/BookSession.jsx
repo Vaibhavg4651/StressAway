@@ -54,7 +54,7 @@ const BookSession = () => {
       currency: "INR",
       name: "Stressaway",
       description: "Test Transaction",
-      image: "./logo.png",
+      image: Logo,
       order_id: order.id, 
       handler: async(response)=>{
         try {
@@ -193,7 +193,7 @@ const BookSession = () => {
               Appointment Date:
             </label>
             <input
-              style={{ width: "210px" }}
+              style={{ width: "151px" }}
               id="date"
               className="login-input"
               autoComplete="off"
@@ -264,7 +264,7 @@ const BookSession = () => {
             <div className="appointmenttype">
               <div
                 className={`chat1 ${isClicked ? "" : " selected"}`}
-                onClick={() => handleSelectedway("chat1")}
+                onClick={() => handleSelectedway("chat")}
               >
                 <img src={chat} alt="" style={{ margin: " 0 0.4rem " }} />
                 Chat
