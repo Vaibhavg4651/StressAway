@@ -242,10 +242,10 @@ const updateTest = asyncHandler(async (req, res) => {
         }
           }
     
-          const GOOGLE_CLIENT_ID = "773420280742-nbhh65mk41sjs6pili1idhgunuoskotq.apps.googleusercontent.com" ;
-          const Facebook_CLIENT_ID = "2412922625549226" ;
-          const GOOGLE_CLIENT_SECRET ="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";
-          const Facebook_CLIENT_SECRET ="d5a6e2d61f7edb6af5e8019f6f7fdbda";
+          const GOOGLE_CLIENT_ID = "197595298599-p1dcjrf2vsm75gavak64pf1fshmpbq5f.apps.googleusercontent.com" ;
+          const Facebook_CLIENT_ID = " 845048906955563" ;
+          const GOOGLE_CLIENT_SECRET ="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";
+          const Facebook_CLIENT_SECRET ="f38278c7f270ddd1e467f354d1a38deb";
 
 passport.use( new GoogleStrategy({
   clientID:GOOGLE_CLIENT_ID,
