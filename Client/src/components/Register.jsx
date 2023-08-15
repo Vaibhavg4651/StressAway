@@ -14,7 +14,7 @@ import fb from "../assets/fbook.png";
 const Register = () => {
   const [email, setemail] = useState("");
   const [name, setname] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [institution, setInstitution] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [password, setpassword] = useState("");
@@ -32,14 +32,19 @@ const Register = () => {
     if (!email) {
       err("provide email");
       return false;
-    } else if (!password) {
-      err("provide password greater than 8 characters");
+    } else if (!password || password.length < 6) {
+      err("provide password greater than 6 characters");
       return false;
     } else if (!name) {
       err("provide name");
       return false;
     }
     return true;
+  };
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const google = async () => {
@@ -80,6 +85,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const v = validate();
+    if(!isValidEmail(email)){
+      err("Invalid email");
+      return false;
+    }
     if (v) {
       try {
         const res = await axios.post("http://localhost:5000/register", {
@@ -105,45 +114,43 @@ const Register = () => {
   };
 
   return (
-    <div className="Login" style={{height:"55rem"}}>
-      <section className="login-content-1" style={{height:"55rem"}}>
+    <div className="Login Register" >
+      <section className="login-content-1" >
         <img src={Logo} style={{ width: " 452.38px", height: "98px" }} alt="" />
       </section>
-      <section className="login-content-2" style={{height:"41rem"}}>
-        <div className="login-content-2-div">
+      <section className="login-content-2" >
+        <div className="login-content-2-div" style={{marginTop:"2rem"}}>
           <a
            href="/login"
             className="logintext"
-            style={{ color: "#545454", fontSize: "1.1rem" }}
+            style={{ color: "#545454", fontSize: "1.2rem"}}
           >
             Login
           </a>
           <button
             className="loginbtn"
             style={{
-              margin: "1.6rem",
-              marginRight: "0",
-              "margin-left": "3rem",
-              width: " 159.27px",
-              height: "50.76px",
+              margin: "2.6rem 1rem 0.6rem 2rem",
+              width: "143.27px",
+              height: "43.76px"
             }}
           >
             <a
               className="logintext"
-              style={{ color: "white", fontSize: "1.1rem" }}
+              style={{ color: "white", fontSize: "1.2rem" }}
             >
               Register
             </a>
           </button>
         </div>
-        <div className="login-content-div" style={{ height: "478px" }}>
+        <div className="login-content-div" style={{ height: "478px", marginTop:"0.5rem" }}>
           <h1>Welcome</h1>
           Please login to your account
         </div>
-        <div className="login-form">
-          <form onSubmit={handleSubmit}>
+        <div className="login-form  register">
+          <form >
             <label htmlFor="name" className="label-input-login">
-              Name
+              Name <span class="required">*</span>
             </label>
             <input
               id="name"
@@ -158,7 +165,7 @@ const Register = () => {
               }}
             />
             <label htmlFor="email" className="label-input-login">
-              Email
+              Email <span class="required">*</span>
             </label>
             <input
               id="email"
@@ -173,7 +180,7 @@ const Register = () => {
               required
             />
             <label htmlFor="password" className="label-input-login">
-              Password
+              Password <span class="required">*</span>
             </label>
             <input
               id="password"
@@ -214,25 +221,28 @@ const Register = () => {
               id="email"
               className="login-input"
               autoComplete="off"
-              type="text"
-              placeholder=" "
-              value={age}
               onChange={(e) => {
                 setAge(e.target.value);
               }}
-            />
+              />
+              </form>
             <div className="loggedin">
-              <a href="" style={{ textDecoration: "none", color: "#545454" }}>
+              <a href="/forgetPassword" style={{ textDecoration: "none", color: "#545454" }}>
                 Forgot Password
               </a>
               <button
+              onClick={handleSubmit}
                 className="loginbtn"
                 style={{ width: " 159.27px", height: "50.76px" }}
               >
-                Register
+               <a
+              className="logintext"
+              style={{ color: "white", fontSize: "1.2rem" }}
+            >
+              Register
+            </a>
               </button>
             </div>
-          </form>
           <div className="login-logo">
             <div className="logos">
               <div onClick={google}>
@@ -242,7 +252,14 @@ const Register = () => {
                 <img src={fb} alt="" />
               </div>
             </div>
-            Terms and Conditions & Privacy Policy
+            <div style={{fontSize:"1.2rem"}}>
+            <a href="/Terms.pdf" style={{textDecoration:"none" ,color: "#545454"}}> Terms and Conditions &nbsp; </a>
+            & 
+            <a href="/Privacy.pdf" style={{textDecoration:"none" ,  color: "#545454"}}>
+
+              &nbsp; Privacy Policy
+            </a>
+            </div>
           </div>
         </div>
       </section>

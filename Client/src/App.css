@@ -98,12 +98,9 @@ top: 0.5rem;
 }
 
 .header {
-  /* position: absolute; */
   width: 100%;
   overflow-x: hidden;
-  /* height: 100vh; */
-  /* background-image: linear-gradient(81.19deg, rgba(25, 64, 176, 0.71) 0.38%, #16A3FE 100%); */
-  height: 410px;
+  height: 25.635rem;
   background: linear-gradient(81.19deg, rgba(25, 64, 176, 0.71) 0.38%, #16A3FE 100%);
   background-size: cover;
 }
@@ -111,8 +108,9 @@ top: 0.5rem;
 .header::before {
   content: "";
   position: absolute;
-  width: 100vw;
-  height: 411px;
+  background-position:center;
+  width: 92.7rem;
+  height: 26rem;
   /* height: 100%; */
   background-size: cover;
   background-image: url('./assets/Vector.png');
@@ -226,9 +224,13 @@ text-align: justify;
   align-items: center;
   justify-content: center;
   width: 50%;
+  height: 35rem;
   
 }
 
+.section-2-content-img img{
+  height: 33rem;
+}
 
 .section-3{
   display: flex;
@@ -547,7 +549,7 @@ color: #1E1E1E;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 77rem;
 }
 
 .diagnostic-test{
@@ -638,7 +640,6 @@ text-align: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100vw;
   height: 518px;
   background: linear-gradient(125.46deg, #4C7CCF 0%, #2297F1 96.72%);
   padding-top: 3rem;
@@ -710,7 +711,7 @@ color: #FFFFFF;
 
 .footsection-2 div{
   display: flex;
-  margin: 1rem 2rem;
+  margin: 0.5rem 1rem;
 }
 
 .footer-text{
@@ -783,15 +784,15 @@ color: #333333;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 98vw;
-  height: 718px;
+  width: 82.6rem;
+  height: 570px;
 }
 
 .login-content-1{
   width: 50%;
   background: linear-gradient(150.64deg, #5479CB 0%, #2DAECA 100%);
   display: flex;
-  height: 718px;
+  height:880px;
   margin-top: -0.5rem;
   align-items: center;
   justify-content: center;
@@ -801,54 +802,57 @@ color: #333333;
 .login-content-2{
   display: flex;
   justify-content: end;
-  height: 659px;
+  height: 662px;
   flex-direction: column;
   margin-left: 7rem;
   width: 50%;
 }
 
 .login-content-2-div{
-  margin-top: 9rem;
+  margin-top: 0rem;
 }
 
 .login-content-div {
   font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
-font-size: 20.9273px;
-line-height: 25px;
+font-size: 15.9273px;
+line-height: 22px;
 color: #545454;
 }
 
 
 .login-form{
-  height: 4000px;
     display: flex;
     flex-direction: column;
     font-family: 'Roboto';
-    height: 557px;
+    height: 459px;
 font-style: normal;
 font-weight: 400;
-font-size: 17.4394px;
-line-height: 20px;
-
+font-size: 15.4394px;
 color: #8E8E8E;
 
+}
+
+.login-form-eye{
+  position: absolute;
+  top: -2rem;
+  left: 29rem;
 }
 
 .login-content-div h1{
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 62.782px;
-  line-height: 74px;
+  font-size: 36.782px;
+  line-height: 67px;
   color: #1E1E1E;
 }
 
 .login-form form{
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .login-form form::-webkit-scrollbar{
@@ -861,6 +865,10 @@ color: #8E8E8E;
   background: rgba(30, 30, 30, 0.2);
 }
 
+.required{
+  color: red;
+  margin-left: 3px;
+}
 .login-form form label{
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -934,7 +942,6 @@ box-shadow: 0px 4.5px 67.5px rgba(0, 0, 0, 0.08);
 
 .Session{
   display: flex;
-  width: 100vw;
   height: 595px;
 }
 
@@ -958,12 +965,12 @@ box-shadow: 0px 4.5px 67.5px rgba(0, 0, 0, 0.08);
   background-image: url('./assets/Vector.svg');
   background-size: cover;
   background-position:center;
-  width: 1366px;
-  height: 260px;
+  width: 82rem;
+  height: 315px;
 }
 
 .session-content-2{
-    width: 43%;
+    width: 47%;
     overflow-y: auto;
     border: 1px solid #D9D9D9;
     box-shadow: 0px 15px 10px -15px #D9D9D9;
@@ -1381,30 +1388,1095 @@ color: #FFFBD6;
 }
 
 .test{
-  width: 102vw;
+  width: 100vw;
 }
 
 .diagnostic-Test{
   display: flex;
   justify-content: center;
+  margin: 1.5rem;
+  width: 83rem;
   flex-direction: column;
 }
 
 .questionnaire{
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
   margin: 2rem 0;
+  font-size: 1.5rem;
 }
 
-.questionnaire label{
-  font-family: 'Rubrik';
-  margin: 0.6rem 0;
+.question label{
+  font-family: "rubrik";
+  margin: 1rem 0;
 }
+
 
 .animation{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.circular{
+  background-image: url(https://wallpapersite.com/images/pages/pic_w/4826.jpg);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+	animation-name: pulse;
+	animation-duration: 10s;	
+	animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  box-shadow: inset 0 0 0 3px #79a6e8; 
+  z-index: -1;
+}
+
+.container:after {
+  content: 'breathe in';
+  position: absolute;
+  color: rgba(255, 255, 255, .7);
+  top: calc(50% - 26px);
+  left: calc(50% - 148px);
+  font-size: 24px;
+  font-family: Helvetica;
+  width: 100%;
+  vertical-align: middle;
+  text-align: center;
+	animation-name: text;
+	animation-duration: 10s;	
+	animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.container:before {
+  content: '';
+  width: 16px;
+  height: 50%;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: calc(50% - 8px);
+  z-index: 999;
+  background-image:
+    radial-gradient(
+      circle at top center,
+      #6080c8 0%,
+      #6080c8 8px,
+      transparent 8px,
+      transparent 100%
+    );
+  animation-timing-function: linear;
+  transform-origin: center bottom;
+	animation-name: rotate;
+	animation-duration: 10s;	
+	animation-iteration-count: infinite; 
+}
+
+.circle {
+  width: 94%;
+  height: 94%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #80c4e0 0%, #656cd2 100%);
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+
+.circle:before {
+  content: '';
+  width: 16px;
+  height: 50%;
+  position: absolute;
+  display: block;
+  top: -9px;
+  left: calc(50% - 8px);
+  background-image:
+    radial-gradient(
+      circle at top center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 8px,
+      transparent 8px,
+      transparent 100%
+    );
+}
+
+.circle:after {
+  content: '';
+  width: 16px;
+  height: 50%;
+  position: absolute;
+  display: block;
+  bottom: -9px;
+  left: calc(50% - 8px);
+  background-image:
+    radial-gradient(
+      circle at bottom center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 8px,
+      transparent 8px,
+      transparent 100%
+    );
+}
+
+@keyframes text {
+  0% {
+    content: 'breathe in';
+  }
+  100% {
+    content: 'breathe out';
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+  50% {
+    transform: rotate(180deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(.6);
+	}
+	50% {
+		transform: scale(1);
+	}	
+	100% {
+		transform: scale(.6);
+	}			
+}
+
+
+.fogetpassword-eye1{
+  width: 4rem;
+  position: absolute;
+  top: 21rem;
+  left: 74rem
+}
+
+.fogetpassword-eye2{
+  width: 4rem;
+  position: absolute;
+  top: 29rem;
+  left: 74rem;
+}
+
+@media (max-width: 480px) {
+  .logo{
+  left:  -1.5rem;
+  }
+
+  .main-header{
+    margin-left: -4%;
+  }
+
+  .header::before{
+    width: 77.6rem;
+  }
+  
+  .section-1content{
+    left: 362px;
+  }
+
+  .subsection{
+    font-size: 22px;
+  }
+  .Services{
+    width: 73rem;
+  }
+  
+  .service-btns button{
+    width: 148.52px;
+    height: 221.46px;
+  }
+
+  .Session{
+    flex-direction: column;
+    height: 150rem;
+    align-items: center;
+  }
+
+  .session-content-1{
+    height: 38rem;
+  }
+  .session-content-1 img{
+    width: 505px;
+    height: 510px;
+    
+  }
+  .session-content-2{
+    height: 94rem;
+    margin-top: 3.5rem;
+    width: 64%;
+  }
+  .session-content-2-book{
+    font-size: 31px;	
+    width: 100%;
+    height: 84px;
+    ;
+    }
+    
+  .session-content-2 form label{
+    line-height: 9rem;
+    font-size: 35px;
+  }
+
+  .session-content-2 form input {
+   width: 494px;
+   height:50px;
+    font-size: 15px;
+     line-height: 24px;
+  }
+
+  .custom-dropdown{
+    width: 34rem;    
+  }
+
+  .chat1 {
+    height: 50px;
+    width:10rem;
+    font-size: 15.9137px;
+    line-height: 22px;
+    }
+
+    .call {
+      height: 50px;
+      width: 10rem;
+      font-size: 15.9137px;
+      line-height: 22px;
+      }
+      
+      .meet {
+        height: 50px;
+        width: 14rem;
+        font-size: 15.9137px;
+        line-height: 22px;
+        }
+        .selected-option{
+          line-height: 35px;
+          font-size: 22px;
+        }
+        .appointmenttype div {
+          margin: 0 0.8rem;
+          }
+        .session-content-2 form button {
+            margin-top: 3.6rem;
+            margin-left: 11rem;
+            font-size: 22px;
+            line-height: 30px;
+            width: 20rem;
+            height: 5.5rem;
+            }
+          
+        .back-img {
+              height: 491px;
+              }
+              
+              .Login{
+                flex-direction: column-reverse;
+                height: 171rem;
+              }
+              .login-content-1{
+                width: 100%;
+              }
+              .login-content-2{
+                height: 106rem;
+                margin-left: 10rem;
+              }
+
+              .login-content-2 div button{
+                margin: 
+                2.6rem 2rem 1.6rem 1rem;
+                width: 194.27px;
+                height: 69.76px;
+                }
+                .login-content-2 div a{
+                  font-size: 2rem;
+                }
+              .login-content-div{
+                line-height: 114px;
+                font-size: 43px;
+              }
+            
+            .login-content-div h1{
+              font-size: 47.782px
+            }
+            .login-form{
+              height: 80rem;
+              font-size: 15.49px;
+            }
+            .loginbtn{
+              height: 2.5rem;
+              width: 7.5rem;
+            }
+            .loginbtn a{
+              font-size: 1.3rem;
+            }
+          .login-form form{
+            height: 38rem;
+            overflow: hidden;
+          }
+          .login-form-eye{
+            width: 5rem;
+            position: absolute;
+            top: 57.3rem;
+            left: 54rem;
+          }
+
+          .login-form form label{
+            font-size: 43.9273px;
+    	     line-height: 60px;
+          }
+          .login-form form input{
+           font-size: 2.5rem;
+    	     height: 60.96px;
+
+          }
+          .loggedin{
+              font-size: 33.9273px;
+              line-height: 85px;
+              margin-top: 3rem;           }   
+        
+            .login-logo{
+              align-items: normal;
+            }
+            .logos{
+              margin-left: 3rem;
+              }
+              .logos div {
+                width: 116px;
+                height: 116px;
+              }
+                
+              .register{
+                height: 193rem;
+              font-size: 15.49px;
+              }
+              .register form{
+                height: 51rem;
+              }
+
+              .fogetpassword-eye1{
+                top: 54rem;
+                left: 54rem;
+              }
+              
+              .fogetpassword-eye2{
+                top: 64rem;
+                left: 55rem;
+              }
+}
+
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .logo{
+    left:  -1.5rem;
+    }
+  
+    .main-header{
+      margin-left: -4%;
+    }
+  
+    .header::before{
+      width: 77.6rem;
+    }
+    
+    .section-1content{
+      left: 362px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+
+    .Services{
+      width: 73rem;
+    }
+    
+    .service-btns button{
+      width: 148.52px;
+      height: 221.46px;
+    }
+    .Session{
+      flex-direction: column;
+      height: 150rem;
+      align-items: center;
+    }
+  
+    .session-content-1{
+      height: 38rem;
+    }
+    .session-content-1 img{
+      width: 505px;
+      height: 510px;
+      
+    }
+    .session-content-2{
+      height: 94rem;
+      margin-top: 3.5rem;
+      width: 64%;
+    }
+    .session-content-2-book{
+      font-size: 31px;	
+      width: 100%;
+      height: 84px;
+      ;
+      }
+      
+    .session-content-2 form label{
+      line-height: 9rem;
+      font-size: 35px;
+    }
+  
+    .session-content-2 form input {
+     width: 494px;
+     height:50px;
+      font-size: 15px;
+       line-height: 24px;
+    }
+  
+    .custom-dropdown{
+      width: 34rem;    
+    }
+  
+    .chat1 {
+      height: 50px;
+      width:10rem;
+      font-size: 15.9137px;
+      line-height: 22px;
+      }
+  
+      .call {
+        height: 50px;
+        width: 10rem;
+        font-size: 15.9137px;
+        line-height: 22px;
+        }
+        
+        .meet {
+          height: 50px;
+          width: 14rem;
+          font-size: 15.9137px;
+          line-height: 22px;
+          }
+          .selected-option{
+            line-height: 35px;
+            font-size: 22px;
+          }
+          .appointmenttype div {
+            margin: 0 0.8rem;
+            }
+          .session-content-2 form button {
+              margin-top: 3.6rem;
+              margin-left: 11rem;
+              font-size: 22px;
+              line-height: 30px;
+              width: 20rem;
+              height: 5.5rem;
+              }
+            
+          .back-img {
+                height: 491px;
+                }
+                
+                .Login{
+                  flex-direction: column-reverse;
+                  height: 171rem;
+                }
+                .login-content-1{
+                  width: 100%;
+                }
+                .login-content-2{
+                  height: 106rem;
+                  margin-left: 10rem;
+                }
+  
+                .login-content-2 div button{
+                  margin: 
+                  2.6rem 2rem 1.6rem 1rem;
+                  width: 194.27px;
+                  height: 69.76px;
+                  }
+                  .login-content-2 div a{
+                    font-size: 2rem;
+                  }
+                .login-content-div{
+                  line-height: 114px;
+                  font-size: 43px;
+                }
+              
+              .login-content-div h1{
+                font-size: 47.782px
+              }
+              .login-form{
+                height: 80rem;
+                font-size: 15.49px;
+              }
+              .loginbtn{
+                height: 2.5rem;
+                width: 7.5rem;
+              }
+              .loginbtn a{
+                font-size: 1.3rem;
+              }
+            .login-form form{
+              height: 38rem;
+              overflow: hidden;
+            }
+            .login-form-eye{
+              width: 5rem;
+              position: absolute;
+              top: 57.3rem;
+              left: 54rem;
+            }
+  
+            .login-form form label{
+              font-size: 43.9273px;
+             line-height: 60px;
+            }
+            .login-form form input{
+             font-size: 2.5rem;
+             height: 60.96px;
+  
+            }
+            .loggedin{
+                font-size: 33.9273px;
+                line-height: 85px;
+                margin-top: 3rem;           }   
+          
+              .login-logo{
+                align-items: normal;
+              }
+              .logos{
+                margin-left: 3rem;
+                }
+                .logos div {
+                  width: 116px;
+                  height: 116px;
+                }
+                  
+                .register{
+                  height: 193rem;
+                font-size: 15.49px;
+                }
+                .register form{
+                  height: 51rem;
+                }
+                .fogetpassword-eye1{
+                  top: 54rem;
+                  left: 54rem;
+                }
+                
+                .fogetpassword-eye2{
+                  top: 64rem;
+                  left: 55rem;
+                }
+  }
+  
+  
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .logo{
+      left:  -1.5rem;
+      }
+    
+      .main-header{
+        margin-left: -4%;
+      }
+    
+      .header::before{
+        width: 77.6rem;
+      }
+      
+      .section-1content{
+        left: 362px;
+      }
+    
+      .subsection{
+        font-size: 22px;
+      }
+  
+      .Services{
+        width: 73rem;
+      }
+      
+      .service-btns button{
+        width: 148.52px;
+        height: 221.46px;
+      }
+      .login-form form{
+        height: 38rem;
+        overflow: hidden;
+      }
+
+      .fogetpassword-eye1{
+        top: 54rem;
+        left: 54rem;
+      }
+      
+      .fogetpassword-eye2{
+        top: 64rem;
+        left: 55rem;
+      }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .logo{
+  left:  -1.5rem;
+
+  }
+  .main-header{
+    margin-left: -4%;
+  }
+
+  .header::before{
+    width: 77.6rem;
+  }
+  
+  .section-1content{
+    left: 362px;
+  }
+
+  .subsection{
+    font-size: 22px;
+  }
+
+  .Services{
+    width: 73rem;
+  }
+  
+  .service-btns button{
+    width: 148.52px;
+    height: 221.46px;
+  }
+  .Session{
+    flex-direction: column;
+    height: 150rem;
+    align-items: center;
+  }
+
+  .session-content-1{
+    height: 38rem;
+  }
+  .session-content-1 img{
+    width: 505px;
+    height: 510px;
+    
+  }
+  .session-content-2{
+    height: 94rem;
+    margin-top: 3.5rem;
+    width: 64%;
+  }
+  .session-content-2-book{
+    font-size: 31px;	
+    width: 100%;
+    height: 84px;
+    ;
+    }
+    
+  .session-content-2 form label{
+    line-height: 9rem;
+    font-size: 35px;
+  }
+
+  .session-content-2 form input {
+   width: 494px;
+   height:50px;
+    font-size: 15px;
+     line-height: 24px;
+  }
+
+  .custom-dropdown{
+    width: 34rem;    
+  }
+
+  .chat1 {
+    height: 50px;
+    width:10rem;
+    font-size: 15.9137px;
+    line-height: 22px;
+    }
+
+    .call {
+      height: 50px;
+      width: 10rem;
+      font-size: 15.9137px;
+      line-height: 22px;
+      }
+      
+      .meet {
+        height: 50px;
+        width: 14rem;
+        font-size: 15.9137px;
+        line-height: 22px;
+        }
+        .selected-option{
+          line-height: 35px;
+          font-size: 22px;
+        }
+        .appointmenttype div {
+          margin: 0 0.8rem;
+          }
+        .session-content-2 form button {
+            margin-top: 3.6rem;
+            margin-left: 11rem;
+            font-size: 22px;
+            line-height: 30px;
+            width: 20rem;
+            height: 5.5rem;
+            }
+          
+        .back-img {
+              height: 491px;
+              }
+              
+              .Login{
+                flex-direction: column-reverse;
+                height: 171rem;
+              }
+              .login-content-1{
+                width: 100%;
+              }
+              .login-content-2{
+                height: 106rem;
+                margin-left: 10rem;
+              }
+
+              .login-content-2 div button{
+                margin: 
+                2.6rem 2rem 1.6rem 1rem;
+                width: 194.27px;
+                height: 69.76px;
+                }
+                .login-content-2 div a{
+                  font-size: 2rem;
+                }
+              .login-content-div{
+                line-height: 114px;
+                font-size: 43px;
+              }
+            
+            .login-content-div h1{
+              font-size: 47.782px
+            }
+            .login-form{
+              height: 80rem;
+              font-size: 15.49px;
+            }
+            .loginbtn{
+              height: 2.5rem;
+              width: 7.5rem;
+            }
+            .loginbtn a{
+              font-size: 1.3rem;
+            }
+          .login-form form{
+            height: 38rem;
+            overflow: hidden;
+          }
+          .login-form-eye{
+            width: 5rem;
+            position: absolute;
+            top: 57.3rem;
+            left: 54rem;
+          }
+
+          .login-form form label{
+            font-size: 43.9273px;
+    	     line-height: 60px;
+          }
+          .login-form form input{
+           font-size: 2.5rem;
+    	     height: 60.96px;
+
+          }
+          .loggedin{
+              font-size: 33.9273px;
+              line-height: 85px;
+              margin-top: 3rem;           }   
+        
+            .login-logo{
+              align-items: normal;
+            }
+            .logos{
+              margin-left: 3rem;
+              }
+              .logos div {
+                width: 116px;
+                height: 116px;
+              }
+                
+              .register{
+                height: 193rem;
+              font-size: 15.49px;
+              }
+              .register form{
+                height: 51rem;
+              }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .logo{
+  left:  -1.5rem;
+  }
+  .main-header{
+    margin-left: -1%;
+  }
+
+  .header::before{
+    width: 77.6rem;
+  }
+  
+  .section-1content{
+    left: 350px;
+  }
+
+  .subsection{
+    font-size: 22px;
+  }
+
+  .Services{
+    width: 73rem;
+  }
+  
+  .service-btns button{
+    width: 148.52px;
+    height: 221.46px;
+  }
+  
+}
+
+@media (min-width: 1200px) and (max-width: 1242px) {
+  .logo{
+    left:  -1.5rem;
+    }
+    .main-header{
+      margin-left: -1%;
+    }
+  
+    .header::before{
+      width: 77.6rem;
+    }
+    
+    .section-1content{
+      left: 350px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+    .section-2-content p {
+      font-size: 20.206px;
+  }
+  .section-2-content h1 {
+    font-size: 43px;
+}
+
+.Services{
+  width: 71rem;
+}
+
+
+.back-img {
+  height: 491px;
+  width: 82rem;
+  }
+.service-btns button{
+  width: 148.52px;
+  height: 221.46px;
+}
+  
+}
+
+@media (min-width: 1243px) and (max-width: 1300px) {
+  .logo{
+    left:  -1.5rem;
+    }
+    .main-header{
+      margin-left: -1%;
+    }
+  
+    .header::before{
+      width: 80.6rem;
+    }
+    
+    .section-1content{
+      left: 362px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+    .section-2-content p {
+      font-size: 20.206px;
+  }
+  .section-2-content h1 {
+    font-size: 43px;
+}
+
+.Services{
+  width: 73rem;
+}
+
+.service-btns button{
+  width: 148.52px;
+  height: 221.46px;
+}
+
+.back-img {
+  height: 491px;
+  width: 82rem;
+  }
+  
+}
+
+@media (min-width: 1300px) and (max-width: 1375px){
+  .logo{
+    left:  -1.5rem;
+    }
+    .main-header{
+      margin-left: -1%;
+    }
+  
+    .header::before{
+      width: 84.8rem;
+    }
+    
+    .section-1content{
+      left: 400px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+
+    .back-img {
+      height: 491px;
+      width: 86rem;
+      }
+
+    .Services{
+      width: 80rem;
+    }
+  .Test{
+    width: 82rem;
+  }
+}
+
+
+
+@media (min-width: 1376px) and (max-width: 1389px) {
+  /* Add styles specific to small laptops and desktops */
+  .logo{
+    left:  -2.5rem;
+    }
+    .main-header{
+      margin-left: -1%;
+    }
+  
+    .header::before{
+      width: 87.6rem;
+    }
+    
+    .section-1content{
+      left: 433px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+    .Services{
+      width: 85rem;
+    }
+
+    .Test{
+      width: 82rem;
+    }
+    .back-img {
+      height: 491px;
+      width: 86rem;
+      }
+}
+@media (min-width: 1390px) and (max-width: 1439px) {
+  /* Add styles specific to small laptops and desktops */
+  .logo{
+    left:  -2.5rem;
+    }
+    .main-header{
+      margin-left: -1%;
+    }
+  
+    .header::before{
+      width: 94rem;
+    }
+    
+    .section-1content{
+      left: 455px;
+    }
+  
+    .subsection{
+      font-size: 22px;
+    }
+    .Services{
+      width: 91rem;
+    }
+    .Test{
+      width: 87rem;
+    }
+    .back-img {
+      height: 491px;
+      width: 90rem;
+      }
+}
+
+@media (min-width: 1440px) and (max-width: 1680px) {
+  /* Add styles specific to medium laptops and desktops */
+  .main-header{
+    margin-left: -1%;
+  }
+
+  .header::before{
+    width: 109rem;
+  }
+  
+  .section-1content{
+    left: 595px;
+  }
+
+  .subsection{
+    font-size: 22px;
+  }
+
+  .section-3-content p{
+    width: 671px;
+  }
+
+  .Services{
+    width: 91rem;
+  }
+  .Test{
+    width: 105rem;
+  }
+  .back-img {
+    height: 491px;
+    width: 94rem;
+    }
 }

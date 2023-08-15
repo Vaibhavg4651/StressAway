@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
       type: String
     },
     age: {
-      type: String
+      type: Number,
     },
     mood: {
       type: Array

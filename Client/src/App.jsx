@@ -19,9 +19,7 @@ function App() {
   const dispatch=useDispatch()
 
   const {user}=useSelector((state)=>{return state})
-  useEffect(() => {
-    getuser();
-  }, []);
+
 
   const getuser=async()=>{
     try{
@@ -32,16 +30,20 @@ function App() {
           "Content-Type": "application/json",
         },
       });
-    
-      if (await res.json().success === true) {
+      
+      const data = await res.json();
+      if (data.success === true) {
         dispatch(setisLoggedin(true));
         dispatch(setdata(data.user));
-        console.log(data.user);
       }
     } catch (e) {
       console.log(e);
     }
   }
+
+  useEffect(() => {
+    getuser();
+  }, []);
   
 
   return (

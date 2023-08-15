@@ -280,7 +280,7 @@ const BookSession = () => {
               </div>
               <div
                 className={`meet  ${isClicked ? "" : " selected"}`}
-                onClick={() => handleSelectedway("meet")}
+                onClick={() => handleSelectedway("Google meet")}
               >
                 <img src={meet} alt="" style={{ margin: " 0 0.4rem " }} />
                 Google meet

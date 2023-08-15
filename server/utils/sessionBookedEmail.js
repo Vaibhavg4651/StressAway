@@ -3,6 +3,7 @@ const OrderConfirmEmail=(data)=>{
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
+  secure: false,
   auth: {
     user: process.env.EMAIL_ID,
     pass: process.env.EMAIL_PASSWORD
@@ -12,7 +13,7 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: process.env.EMAIL_ID,
   to:  data.email,
-  // cc: email,
+  cc: "shubhank2343@gmail.com",
   subject: ` Booking Confirmation - StressAway Session`,
    html:`<p>Dear ${data.name},<br/>
 
@@ -20,7 +21,7 @@ var mailOptions = {
    
    - Date: ${data.date}<br/>
    - Time: ${data.time}<br/>
-   - Duration: 1:00 hr <br/>
+   - Duration: 30 mins <br/>
    - Mode: ${data.mode}<br/><br/>
    
    Please prepare for the session by finding a quiet and comfortable space. If it's an online session, ensure a stable internet connection. For first-time sessions, please arrive a few minutes early to complete any necessary tests.<br/>
@@ -36,12 +37,6 @@ var mailOptions = {
    StressAway Team</p>`
 };
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+transporter.sendMail(mailOptions);
 }
 export default OrderConfirmEmail;

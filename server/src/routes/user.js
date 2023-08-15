@@ -10,7 +10,7 @@ import {
   updatePassword
   } from '../controllers/userController.js'
   import { protect } from '../../middleware/authMiddleware.js'
-  import {  checkout , paymentVerification } from '../controllers/sessionController.js'
+  import {  checkout , paymentVerification , getSessions } from '../controllers/sessionController.js'
 
 
   router.route('/register').post(registerUser).get(protect, getUsers)
@@ -29,8 +29,9 @@ import {
   router
   .put('/user/resetpassword', updatePassword)
 
-  router.route("/user/session/checkout").post(checkout);
-  router.route("/user/session/paymentverification").post(paymentVerification);
+  router.route("/user/session/checkout").post(checkout); // to create a new session
+  router.route("/user/getsessions").post(getSessions); // to get all the sessions of a user
+  router.route("/user/session/paymentverification").post(paymentVerification); // to verify the payment
 
 
 

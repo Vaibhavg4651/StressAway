@@ -101,13 +101,9 @@ const Forgetpassword = () => {
               placeholder=""
             />
             <div
+            className="fogetpassword-eye1"
               onClick={() => setNewShowPassword(!showNewPassword)}
-              style={{
-                width: "4rem",
-                position: "absolute",
-                top: "21rem",
-                left: "74rem",
-              }}
+        
             >
               {showNewPassword ? (
                 <img src={eye} alt="" />
@@ -131,13 +127,9 @@ const Forgetpassword = () => {
               placeholder=""
             />
             <div
+            className="fogetpassword-eye2"
               onClick={() => setConShowPassword(!showConPassword)}
-              style={{
-                width: "4rem",
-                position: "absolute",
-                top: "29rem",
-                left: "74rem",
-              }}
+            
             >
               {showConPassword ? (
                 <img src={eye} alt="" />

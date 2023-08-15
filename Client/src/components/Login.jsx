@@ -43,17 +43,12 @@ const Login = () => {
     try {
       const res = window.open("http://localhost:5000/auth/google")
       if (res.data.success === true) {
-        toast.success("Successfully Logged In", {
-          'position': 'bottom-right',
-          'theme': 'colored'
-        })
         navigate(`/user`)
-
       } else {
         err(res.data.message)
       }
     } catch (e) {
-      err("Wrong email or password...")
+      err("Wrong email...")
     }
   }
 
@@ -93,7 +88,7 @@ const Login = () => {
             }else{
                 err(res.data.message)
             }}catch(e){
-                err("something went wrong...");
+                err("Invalid email or password");
             }
     
     }
@@ -109,11 +104,9 @@ const Login = () => {
           <button
             className="loginbtn"
             style={{
-              margin: "1.6rem",
-              marginLeft: "0",
-              "margin-right": "3rem",
-              width: " 159.27px",
-              height: "50.76px",
+              margin: "2.6rem 2rem 0.6rem 0px",
+              width: "143.27px",
+              height: "43.76px"
             }}
           >
             <a
@@ -162,8 +155,10 @@ const Login = () => {
               onChange={(e) => { setpassword(e.target.value) }}
               placeholder=""
             />
-            <div onClick={() => setShowPassword(!showPassword)} style={{width:"4rem" , position:"absolute" , top:"27rem", left:"74rem"}}>
+            <div style={{position:"relative"}}>
+            <div className="login-form-eye" onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? <img src={eye} alt="" /> : <img src={ieye} alt="" />}
+            </div>
             </div>
             <div className="loggedin">
               <a href="/forgetPassword" style={{ textDecoration: "none", color: "#545454" }}>
@@ -192,7 +187,15 @@ const Login = () => {
               <img src={fb} alt=""/>
             </div>
             </div>
-          Terms and Conditions & Privacy Policy
+            <div style={{fontSize:"1.2rem"}}>
+
+            <a href="/Terms.pdf" style={{textDecoration:"none" ,color: "#545454"}}> Terms and Conditions  &nbsp;</a>
+            & 
+            <a href="/Privacy.pdf" style={{textDecoration:"none" ,  color: "#545454"}}>
+
+              &nbsp; Privacy Policy
+            </a>
+            </div>
           </div>
         </div>
         <ToastContainer />

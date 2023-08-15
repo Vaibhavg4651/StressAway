@@ -8,7 +8,6 @@ import team from "./assets/Teamwork.png";
 import happy from "./assets/happy.png";
 import angry from "./assets/angry.png";
 import anxious from "./assets/anxious.png";
-import * as LottiePlayer from "@lottiefiles/lottie-player";
 import sad from "./assets/sad.png";
 import { ToastContainer, toast } from "react-toastify";
 import About from "./components/About";
@@ -77,14 +76,11 @@ const UserFeed = () => {
             </h1>
             Take a deep breath
             <div className="animation">
-              <lottie-player
-                autoplay
-                loop
-                mode="normal"
-                id="fifthLottie"
-                src="https://assets9.lottiefiles.com/packages/lf20_sddhugoc.json"
-                style={{ width: "300px", height: "300px" }}
-              ></lottie-player>
+              <div className="circular">
+                <div className="container">
+                  <div className="circle"></div>
+                </div>
+              </div>
               <img src={team} alt="" style={{ marginLeft: "3rem" }} />
             </div>
           </div>

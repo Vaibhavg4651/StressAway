@@ -11,13 +11,14 @@ const Question = ({ options, selectedValue, onOptionChange }) => {
   return (
     <div className='questionnaire'>
       {options.map((option, index) => (
-        <div key={index}>
+        <div key={index} className="question">
           <label>
             <input
               type='radio'
               value={option}
               checked={selectedValue === option}
               onChange={() => onOptionChange(option, index)}
+              required
             />
             {option}
           </label>
@@ -50,7 +51,6 @@ const Test = () => {
     question18: { option: "", score: 0 },
     question19: { option: "", score: 0 },
     question20: { option: "", score: 0 },
-    question21: { option: "", score: 0 }
   });
 
   const handleOptionChange = (question, option, score) => {
@@ -70,44 +70,44 @@ const Test = () => {
        `http://localhost:5000/user/test`,
        {
          id: dataset._id,
-         newValue: { [Date()]: {questionnaire ,totalScore} },
+         newValue: { [Date()]: {questionnaire , totalScore} },
          check: check,
        }
        );
        switch (true) {
-        case totalScore < 10:
+        case totalScore < 7:
           toast.success("These ups and downs are considered normal", {
             position: "bottom-right",
             theme: "colored",
           });
           break;
-        case totalScore < 16:
+        case totalScore < 13:
           toast.info("Mild mood disturbances.", {
             position: "bottom-right",
             theme: "colored",
           });
           break;
-        case totalScore < 20:
+        case totalScore < 17:
           toast.warning("Bordeline clinical depression.", {
             position: "bottom-right",
             theme: "colored",
             color: "yellow"
           });
           break;
-        case totalScore < 30:
+        case totalScore < 27:
           toast.warning("Moderate depression.", {
             position: "bottom-right",
             theme: "colored",
             color: "yellow"
           });
           break;
-        case totalScore < 40:
+        case totalScore < 37:
           toast.error("Severe depression.", {
             position: "bottom-right",
             theme: "colored",
           });
           break;
-        case totalScore > 40:
+        case totalScore > 36:
           toast.error("Extreme depression.", {
             position: "bottom-right",
             theme: "colored",
@@ -127,11 +127,14 @@ const Test = () => {
   };
 
   return (
-    <div className='test'>
+    < >
       <Navbar />
       <div className='diagnostic-Test'>
-        <div>
-          <h1>Diagnostic Test</h1>
+        <div style={{display:"flex", alignItems:"center" , justifyContent:"center", flexDirection:"column"}}>
+         <div style={{backgroundColor: "#f0f7fc" , padding: "20px",
+      textAlign: "center" , borderRadius:"50px"}}>
+          <h1 style={{color: "#007BFF" }}>Diagnostic Test</h1>
+         </div>
           <form onSubmit={handleSubmit}>
             {jsonData.Questions.map((question, index) => (
               
@@ -144,13 +147,15 @@ const Test = () => {
                 }
               />
             ))}
-            <button type='submit' onClick={handleSubmit}>Submit</button>
+            <button type='submit' className='loginbtn' onClick={handleSubmit}> <a className="logintext"
+              style={{ color: "white", fontSize: "1.1rem" }}> Submit
+              </a> </button>
           </form>
         </div>
         <ToastContainer />
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

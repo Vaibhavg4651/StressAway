@@ -15,7 +15,6 @@ const sessionSchema = new mongoose.Schema(
         type: String,
         required: true,
         max: 50,
-        unique: true,
       },
       phoneNumber: {
         type: Number,

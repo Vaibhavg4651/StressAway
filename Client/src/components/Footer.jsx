@@ -36,7 +36,8 @@ const Footer = () => {
       </div>
       <div className="divider"></div>
       <div className="footsection-2">
-        <div>
+          <div style={{display:"flex" , flexDirection:"column"}}>
+        <div  style={{display:"flex" , flexDirection:"row"}}>
           <div
             style={{
               border: "1.5px solid rgb(231 231 231)",
@@ -80,12 +81,26 @@ const Footer = () => {
             <img src={twitter} alt="message" />
           </div>
         </div>
+          <div style={{fontSize:"1rem"}}>
+            <a href="/Terms.pdf" style={{textDecoration:"none" ,color: "#545454"}}> Terms and Conditions  &nbsp; </a>
+            & 
+            <a href="/Privacy.pdf" style={{textDecoration:"none" ,  color: "#545454"}}>
+
+              &nbsp; Privacy Policy
+            </a>
+        </div>
+        </div>
         <div className="footer-text">
           Please note that StressAway is not a suicide helpline. In case you are
           suicidal, <br /> please call a suicide helpline immediately at 9152987821 or
           1800-5990019.
         </div>
+        <div style={{display:"flex", flexDirection:"column"}}>
         <div>© 2023. All rights reserved</div>
+        <div style={{fontSize:"1rem"}}>
+            <a href="/Cancel.pdf" style={{textDecoration:"none" ,color: "#545454"}}> Cancellation Policy</a>
+        </div>
+        </div>
       </div>
     </div>
   );
