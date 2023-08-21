@@ -109,10 +109,12 @@ top: 0.5rem;
   content: "";
   position: absolute;
   background-position:center;
-  width: 92.7rem;
+  width: 100vw;
   height: 26rem;
   /* height: 100%; */
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   background-image: url('./assets/Vector.png');
   transform: matrix(1, 0, 0, 1, 0, 0);
   /* opacity: 0.4; */
