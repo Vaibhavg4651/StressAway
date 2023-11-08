@@ -1,0 +1,6 @@
+---
+deployment:
+      tasks:
+        - export DEPLOYPATH=/home/tzwmaoom/repositories/StressAway
+        - /bin/cp -r * $DEPLOYPATH                        #copy all recursively to $DEPLOYPATH
+        
