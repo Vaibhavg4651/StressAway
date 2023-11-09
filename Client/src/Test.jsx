@@ -67,7 +67,7 @@ const Test = () => {
 
     try {
       await axios.put(
-       `http://localhost:5000/user/test`,
+       `${process.env.NEXT_PUBLIC_API_URL}/user/test`,
        {
          id: dataset._id,
          newValue: { [Date()]: {questionnaire , totalScore} },

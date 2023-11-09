@@ -41,7 +41,7 @@ const Login = () => {
 
   const google = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/google")
+      const res = window.open(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`)
       if (res.data.success === true) {
         navigate(`/user`)
       } else {
@@ -54,7 +54,7 @@ const Login = () => {
 
   const facebook = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/facebook");
+      const res = window.open(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook`);
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
           position: "bottom-right",
@@ -75,7 +75,7 @@ const Login = () => {
     const v = validate() 
     if (v) {
         try{
-            const res=await axios.post("http://localhost:5000/login",{email,password});
+            const res=await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`,{email,password});
             if(res.data.success===true){
               dispatch(setisLoggedin(true))
              dispatch(setdata(res.data.message))

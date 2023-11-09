@@ -49,7 +49,7 @@ const Register = () => {
 
   const google = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/google");
+      const res = window.open(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`);
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
           position: "bottom-right",
@@ -67,7 +67,7 @@ const Register = () => {
 
   const facebook = async () => {
     try {
-      const res = window.open("http://localhost:5000/auth/facebook");
+      const res = window.open(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook`);
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
           position: "bottom-right",
@@ -91,7 +91,7 @@ const Register = () => {
     }
     if (v) {
       try {
-        const res = await axios.post("http://localhost:5000/register", {
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
           email,
           password,
           name,

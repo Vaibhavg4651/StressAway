@@ -25,13 +25,13 @@ const BookSession = () => {
   const dispatch=useDispatch()
 
   const logouthandler= async()=>{
-    await axios.get("http://localhost:5000/user/logout");
+    await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
   }
   const logout = async() => {
-    await axios.get("http://localhost:5000/logout");
+    await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
@@ -41,9 +41,9 @@ const BookSession = () => {
 
   const checkoutHandler = async (e) => {
     e.preventDefault();
-    const { data: {key} } = await axios.get("http://localhost:5000/getkey");
+    const { data: {key} } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/getkey`);
     const { data:{order} } = await axios.post(
-      "http://localhost:5000/user/session/checkout",
+      `${process.env.NEXT_PUBLIC_API_URL}/user/session/checkout`,
       {
         amount: 500,
       }
@@ -58,7 +58,7 @@ const BookSession = () => {
       order_id: order.id, 
       handler: async(response)=>{
         try {
-          await axios.post("http://localhost:5000/user/session/paymentverification", {
+          await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/session/paymentverification`, {
             userId: dataset._id,
             name: name,
             email: email,
