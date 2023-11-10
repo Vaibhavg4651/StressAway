@@ -9,13 +9,13 @@ const Navbar = () => {
   const dispatch=useDispatch()
 
   const logouthandler= async()=>{
-    await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/logout`);
+    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/user/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
   }
   const logout = async() => {
-    await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/logout`);
+    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");

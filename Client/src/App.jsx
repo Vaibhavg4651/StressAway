@@ -23,7 +23,7 @@ function App() {
 
   const getuser=async()=>{
     try{
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/success`, {
+      const res = await fetch(`${import.meta.env.NEXT_PUBLIC_API_URL}/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {

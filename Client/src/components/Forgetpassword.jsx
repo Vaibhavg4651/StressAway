@@ -40,7 +40,7 @@ const Forgetpassword = () => {
     const v = validate();
     if (v) {
       try {
-        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/user/resetpassword`, {
+        const res = await axios.put(`${import.meta.env.NEXT_PUBLIC_API_URL}/user/resetpassword`, {
             email, newpassword ,conpassword
         });
         if (res.data.success === true) {

@@ -31,7 +31,7 @@ const UserFeed = () => {
   const updateField = async (value) => {
     setIsClicked(true);
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
+      await axios.put(`${import.meta.env.NEXT_PUBLIC_API_URL}/user`, {
         id: dataset._id,
         newValue: { [value]: Date() },
         check: check,
@@ -51,7 +51,7 @@ const UserFeed = () => {
     setIsSessionClicked(!isSessionClicked);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/getsessions`,
+        `${import.meta.env.NEXT_PUBLIC_API_URL}/user/getsessions`,
         {
           userId: dataset._id,
         }
