@@ -11,6 +11,7 @@ import eye from "../assets/eye.png";
 import ieye from "../assets/invisible.png";
 import axios from 'axios'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
+import API_URL from "../config";
 
 const Login = () => {
   const [email, setemail] = useState('')
@@ -41,7 +42,7 @@ const Login = () => {
 
   const google = async () => {
     try {
-      const res = window.open(`${import.meta.env.NEXT_PUBLIC_API_URL}/auth/google`)
+      const res = window.open(`${API_URL}/auth/google`)
       if (res.data.success === true) {
         navigate(`/user`)
       } else {
@@ -54,7 +55,7 @@ const Login = () => {
 
   const facebook = async () => {
     try {
-      const res = window.open(`${import.meta.env.NEXT_PUBLIC_API_URL}/auth/facebook`);
+      const res = window.open(`${API_URL}/auth/facebook`);
       if (res.data.success === true) {
         toast.success("Successfully Logged In", {
           position: "bottom-right",
@@ -75,7 +76,7 @@ const Login = () => {
     const v = validate() 
     if (v) {
         try{
-            const res=await axios.post(`${import.meta.env.NEXT_PUBLIC_API_URL}/login`,{email,password});
+            const res=await axios.post(`${API_URL}/login`,{email,password});
             if(res.data.success===true){
               dispatch(setisLoggedin(true))
              dispatch(setdata(res.data.message))

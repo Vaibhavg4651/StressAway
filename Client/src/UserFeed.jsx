@@ -11,6 +11,7 @@ import anxious from "./assets/anxious.png";
 import sad from "./assets/sad.png";
 import { ToastContainer, toast } from "react-toastify";
 import About from "./components/About";
+import API_URL from "./config";
 
 const UserFeed = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const UserFeed = () => {
   const updateField = async (value) => {
     setIsClicked(true);
     try {
-      await axios.put(`${import.meta.env.NEXT_PUBLIC_API_URL}/user`, {
+      await axios.put(`${API_URL}/user`, {
         id: dataset._id,
         newValue: { [value]: Date() },
         check: check,
@@ -51,7 +52,7 @@ const UserFeed = () => {
     setIsSessionClicked(!isSessionClicked);
     try {
       const response = await axios.post(
-        `${import.meta.env.NEXT_PUBLIC_API_URL}/user/getsessions`,
+        `${API_URL}/user/getsessions`,
         {
           userId: dataset._id,
         }

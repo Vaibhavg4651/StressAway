@@ -3,19 +3,20 @@ import Logo from '/logo.png'
 import { useDispatch, useSelector } from 'react-redux'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
 import axios from 'axios'
+import API_URL from '../config'
 
 const Navbar = () => {
   const {user}=useSelector((state)=>{return state})
   const dispatch=useDispatch()
 
   const logouthandler= async()=>{
-    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/user/logout`);
+    await axios.get(`${API_URL}/user/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
   }
   const logout = async() => {
-    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/logout`);
+    await axios.get(`${API_URL}/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");

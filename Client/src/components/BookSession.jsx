@@ -8,7 +8,7 @@ import rup from "../assets/rupee.svg";
 import axios from "axios";
 import Logo from '/logo.png'
 import {setdata,setisLoggedin} from '../reducers/userSlice'
-
+import API_URL from "../config";
 
 const BookSession = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,13 +25,13 @@ const BookSession = () => {
   const dispatch=useDispatch()
 
   const logouthandler= async()=>{
-    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/user/logout`);
+    await axios.get(`${API_URL}/user/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
   }
   const logout = async() => {
-    await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/logout`);
+    await axios.get(`${API_URL}/logout`);
     dispatch(setisLoggedin(false))
     dispatch(setdata(""))
     window.open("/", "_self");
@@ -41,9 +41,9 @@ const BookSession = () => {
 
   const checkoutHandler = async (e) => {
     e.preventDefault();
-    const { data: {key} } = await axios.get(`${import.meta.env.NEXT_PUBLIC_API_URL}/getkey`);
+    const { data: {key} } = await axios.get(`${API_URL}/getkey`);
     const { data:{order} } = await axios.post(
-      `${import.meta.env.NEXT_PUBLIC_API_URL}/user/session/checkout`,
+      `${API_URL}/user/session/checkout`,
       {
         amount: 500,
       }
@@ -58,7 +58,7 @@ const BookSession = () => {
       order_id: order.id, 
       handler: async(response)=>{
         try {
-          await axios.post(`${import.meta.env.NEXT_PUBLIC_API_URL}/user/session/paymentverification`, {
+          await axios.post(`${API_URL}/user/session/paymentverification`, {
             userId: dataset._id,
             name: name,
             email: email,
