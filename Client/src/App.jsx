@@ -1,4 +1,4 @@
-
+import API_URL from "./config";
 import "./App.css";
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -23,14 +23,15 @@ function App() {
 
   const getuser=async()=>{
     try{
-      const res = await fetch("http://localhost:5000/auth/login/success", {
+      console.log(API_URL)
+      const res = await fetch(`${API_URL}/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      
+      console.log(res)
       const data = await res.json();
       if (data.success === true) {
         dispatch(setisLoggedin(true));

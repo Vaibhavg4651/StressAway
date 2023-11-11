@@ -6,6 +6,7 @@ import { useState  } from 'react';
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify'
 import jsonData from './data.json';
+import API_URL from './config';
 
 const Question = ({ options, selectedValue, onOptionChange }) => {
   return (
@@ -67,7 +68,7 @@ const Test = () => {
 
     try {
       await axios.put(
-       `http://localhost:5000/user/test`,
+       `${API_URL}/user/test`,
        {
          id: dataset._id,
          newValue: { [Date()]: {questionnaire , totalScore} },

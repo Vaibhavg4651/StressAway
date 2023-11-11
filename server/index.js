@@ -19,7 +19,7 @@ const app = express();
 // app.use(cors({origin:"https://pro-shop-ecommerce.onrender.com",credentials:true}))
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: `${process.env.FRONTEND_URL}`,
     credentials: true,
   })
 );
@@ -49,7 +49,7 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:5173/user",
+    successRedirect: `${process.env.FRONTENd_URL}/user`,
     failureRedirect: "/login/failed",
   })
 );
@@ -58,7 +58,7 @@ app.get("/auth/facebook", passport.authenticate("facebook"));
 app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
-    successRedirect: "http://localhost:5173/user",
+    successRedirect: `${process.env.FRONTEND_URL}/user`,
     failureRedirect: "/login/failed",
   })
 );
@@ -77,7 +77,7 @@ app.get("/auth/login/success", (req, res) => {
 app.get("/logout", (req, res) => {
   req.logout();
   req.session = null;
-  res.redirect("http://localhost:5173");
+  res.redirect(`${process.env.FRONTEND_URL}`);
   res.clearCookie("connect.sid" , {path: "/" , httpOnly: true , sameSite: "none" , secure: false});
 });
 
